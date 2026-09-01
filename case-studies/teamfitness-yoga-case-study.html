@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Fitness with Yoga — Campaign Case Study | Bhuvaneshwari</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FAF8F4;
+    --ink: #1A1714;
+    --ink-soft: #4A4540;
+    --ink-muted: #8A8480;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --purple-mid: #7F77DD;
+    --purple-dark: #3C3489;
+    --coral: #D85A30;
+    --coral-light: #FAECE7;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --teal: #0F6E56;
+    --teal-light: #E1F5EE;
+    --border: rgba(26,23,20,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px; }
+  .nav-name { font-family: var(--serif); font-size: 16px; color: var(--ink); text-decoration: none; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--ink-muted); text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .back-link { font-size: 13px; color: var(--purple); text-decoration: none; display: flex; align-items: center; gap: 4px; }
+
+  .hero { max-width: 860px; margin: 0 auto; padding: 5rem 2rem 4rem; border-bottom: 1px solid var(--border); }
+  .hero-tag { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple); background: var(--purple-light); padding: 4px 12px; border-radius: 100px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; max-width: 700px; }
+  .hero h1 em { font-style: italic; color: var(--purple); }
+  .hero-sub { font-size: 17px; color: var(--ink-soft); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.75; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+  .meta-item { display: flex; flex-direction: column; gap: 2px; }
+  .meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+  .meta-value { font-size: 14px; font-weight: 500; color: var(--ink); }
+
+  .page { max-width: 860px; margin: 0 auto; padding: 0 2rem 6rem; }
+  .section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); margin-bottom: 1rem; }
+  .section h2 { font-family: var(--serif); font-size: 1.75rem; color: var(--ink); margin-bottom: 1.25rem; line-height: 1.3; }
+  .section p { color: var(--ink-soft); margin-bottom: 1rem; max-width: 640px; }
+
+  .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 2rem 0; }
+  .kpi-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem 1rem; text-align: center; }
+  .kpi-number { font-family: var(--serif); font-size: 2.25rem; color: var(--purple); line-height: 1; margin-bottom: 6px; }
+  .kpi-desc { font-size: 12px; color: var(--ink-muted); line-height: 1.5; }
+
+  .challenge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+  .challenge-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .challenge-card h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .challenge-card p { font-size: 13px; color: var(--ink-soft); margin: 0; max-width: 100%; }
+  .challenge-icon { font-size: 11px; font-weight: 500; letter-spacing: 0.07em; text-transform: uppercase; color: var(--purple); margin-bottom: 8px; }
+
+  .funnel { margin: 2rem 0; }
+  .funnel-stage { display: flex; gap: 1.25rem; margin-bottom: 1rem; align-items: flex-start; }
+  .stage-badge { flex-shrink: 0; width: 96px; text-align: center; padding: 6px 0; border-radius: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+  .stage-discover { background: var(--purple-light); color: var(--purple-dark); }
+  .stage-engage { background: var(--amber-light); color: #633806; }
+  .stage-convert { background: var(--coral-light); color: #712B13; }
+  .stage-retain { background: var(--teal-light); color: #085041; }
+  .stage-content h3 { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .stage-content p { font-size: 14px; color: var(--ink-soft); margin: 0; max-width: 100%; }
+
+  .tools-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.5rem 0; }
+  .tool-tag { font-size: 13px; color: var(--ink-soft); background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 5px 14px; }
+
+  .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+  .persona-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .persona-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
+  .persona-card ul { list-style: none; }
+  .persona-card li { font-size: 13px; color: var(--ink-soft); padding: 3px 0; display: flex; align-items: flex-start; gap: 8px; }
+  .persona-card li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--purple-mid); flex-shrink: 0; margin-top: 8px; }
+
+  .content-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 1.5rem 0; }
+  .content-card { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .content-type { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+  .content-card h3 { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 6px; }
+  .content-card p { font-size: 13px; color: var(--ink-soft); margin: 0; max-width: 100%; }
+
+  .creative-box { background: var(--ink); border-radius: 16px; padding: 2.5rem; margin: 1.5rem 0; display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; }
+  .creative-hook { font-family: var(--serif); font-style: italic; font-size: 1.75rem; color: #fff; flex: 1; min-width: 200px; line-height: 1.3; }
+  .creative-hook span { color: var(--purple-mid); }
+  .creative-rationale { flex: 1; min-width: 200px; }
+  .creative-rationale p { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 0.75rem; max-width: 100%; }
+  .creative-rationale p:last-child { margin: 0; }
+
+  .local-box { background: var(--purple-light); border-radius: 12px; padding: 1.5rem 1.75rem; margin: 1.5rem 0; border-left: 3px solid var(--purple); }
+  .local-box h3 { font-size: 15px; font-weight: 500; color: var(--purple-dark); margin-bottom: 8px; }
+  .local-box p { font-size: 14px; color: var(--purple-dark); margin: 0; max-width: 100%; opacity: 0.85; }
+
+  .learning-list { margin: 1.5rem 0; }
+  .learning-item { display: flex; gap: 1rem; margin-bottom: 1.25rem; align-items: flex-start; }
+  .learning-num { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: var(--purple-light); color: var(--purple); font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+  .learning-item p { font-size: 15px; color: var(--ink-soft); margin: 0; }
+  .learning-item strong { color: var(--ink); font-weight: 500; }
+
+  .cta-section { background: var(--purple); border-radius: 16px; padding: 3rem; text-align: center; margin-top: 3rem; }
+  .cta-section h2 { font-family: var(--serif); font-size: 1.75rem; color: #fff; margin-bottom: 0.75rem; }
+  .cta-section p { color: rgba(255,255,255,0.75); margin-bottom: 1.75rem; max-width: 100%; }
+  .cta-btn { display: inline-block; background: #fff; color: var(--purple); font-size: 14px; font-weight: 500; padding: 12px 28px; border-radius: 8px; text-decoration: none; }
+  .nav-pill { display: flex; gap: 8px; flex-wrap: wrap; margin: 1.5rem 0; }
+  .nav-pill a { font-size: 12px; padding: 5px 14px; border: 1px solid var(--border); border-radius: 100px; color: var(--ink-soft); text-decoration: none; background: #fff; }
+  .nav-pill a:hover { border-color: var(--purple); color: var(--purple); }
+
+  footer { text-align: center; padding: 2rem; font-size: 13px; color: var(--ink-muted); border-top: 1px solid var(--border); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+  .hero { animation: fadeUp 0.6s ease both; }
+  .section { animation: fadeUp 0.5s ease both; }
+  @media (max-width: 600px) { nav { padding: 0 1rem; } .nav-links { gap: 1rem; } .hero, .page { padding-left: 1.25rem; padding-right: 1.25rem; } .creative-box { padding: 1.75rem; } .cta-section { padding: 2rem 1.5rem; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-name" href="portfolio.html">Bhuvaneshwari B.</a>
+  <ul class="nav-links">
+    <li><a href="#brief">Brief</a></li>
+    <li><a href="#strategy">Strategy</a></li>
+    <li><a href="#creative">Creative</a></li>
+    <li><a href="#results">Results</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <img src="../assets/teamfitness-logo.svg" alt="Team Fitness with Yoga Logo" style="width: 80px; height: 80px; object-fit: contain; border-radius: 12px; margin-bottom: 1.5rem; display: block; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+  <div class="hero-tag">Case Study — Fitness & Wellness · Local Brand · Chennai</div>
+  <h1>Building a loyal yoga community for Team Fitness through <em>hyperlocal digital marketing</em></h1>
+  <p class="hero-sub">A full-funnel digital campaign designed to grow trial class bookings, build brand awareness, and create a returning member community for Team Fitness with Yoga — a boutique yoga studio in Porur, Chennai.</p>
+  <div class="hero-meta">
+    <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Campaign Strategist</span></div>
+    <div class="meta-item"><span class="meta-label">Brand</span><span class="meta-value">Team Fitness with Yoga</span></div>
+    <div class="meta-item"><span class="meta-label">Location</span><span class="meta-value">Porur, Chennai</span></div>
+    <div class="meta-item"><span class="meta-label">Sector</span><span class="meta-value">Fitness · Wellness</span></div>
+    <div class="meta-item"><span class="meta-label">Platforms</span><span class="meta-value">Meta · Google · WhatsApp</span></div>
+    <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2025</span></div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- BRIEF -->
+  <div class="section" id="brief">
+    <div class="section-label">01 — The Brief</div>
+    <h2>The challenge</h2>
+    <p>Team Fitness with Yoga is a boutique yoga and fitness studio in Porur, Chennai — a rapidly growing residential neighbourhood with a large working-professional population. Despite offering quality classes, the studio faced a classic local business problem: low digital visibility, relying entirely on word-of-mouth and walk-in footfall.</p>
+    <p>The brief was to build a digital presence from scratch, drive trial class bookings within a 5 km radius of Porur, and convert first-time visitors into long-term members through a retention-first campaign strategy.</p>
+
+    <div class="challenge-grid">
+      <div class="challenge-card">
+        <div class="challenge-icon">Challenge 01</div>
+        <h3>Zero digital presence</h3>
+        <p>No active Instagram, no Google Business profile, no ad history. Starting from ground zero in a competitive Chennai fitness market.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">Challenge 02</div>
+        <h3>Hyperlocal reach needed</h3>
+        <p>Budget was limited — every rupee had to reach people within 5 km who could realistically attend. No wasted national impressions.</p>
+      </div>
+      <div class="challenge-card">
+        <div class="challenge-icon">Challenge 03</div>
+        <h3>High churn in fitness</h3>
+        <p>The fitness industry sees 50%+ dropout in the first 3 months. The campaign needed a retention layer, not just acquisition.</p>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-number">30%</div><div class="kpi-desc">Projected trial class booking increase via local Meta ads</div></div>
+      <div class="kpi-card"><div class="kpi-number">40%</div><div class="kpi-desc">Forecasted Google Maps visibility improvement via GMB optimisation</div></div>
+      <div class="kpi-card"><div class="kpi-number">4</div><div class="kpi-desc">Funnel stages designed including post-conversion retention</div></div>
+      <div class="kpi-card"><div class="kpi-number">3</div><div class="kpi-desc">Distinct audience personas targeted</div></div>
+    </div>
+  </div>
+
+  <!-- STRATEGY -->
+  <div class="section" id="strategy">
+    <div class="section-label">02 — The Strategy</div>
+    <h2>4-stage hyperlocal funnel</h2>
+    <p>Unlike a national brand campaign, this required a hyperlocal strategy — combining paid ads, organic content, Google My Business, and WhatsApp community building to win within a 5 km radius of Porur.</p>
+
+    <div class="funnel">
+      <div class="funnel-stage">
+        <div class="stage-badge stage-discover">Discover</div>
+        <div class="stage-content">
+          <h3>Make Team Fitness findable locally</h3>
+          <p>Google My Business optimisation with keyword-rich descriptions, photos, and weekly posts. Meta ads with 5 km radius targeting in Porur, Ramapuram, and Valasaravakkam. Targeting: working professionals 24–40, interest in yoga, fitness, and stress relief.</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="stage-badge stage-engage">Engage</div>
+        <div class="stage-content">
+          <h3>Build trust through organic content</h3>
+          <p>Instagram Reels showing real class sessions, instructor introductions, and student transformation stories. Content pillars: Yoga tips, Behind the scenes, Member spotlights, Chennai-specific content ("Morning yoga in Porur — before the traffic hits").</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="stage-badge stage-convert">Convert</div>
+        <div class="stage-content">
+          <h3>Drive trial bookings with a low-risk offer</h3>
+          <p>Meta Lead Ads offering a free first class — removing the financial risk of trying a new studio. WhatsApp Click-to-Chat ads for instant enquiry resolution. Retargeting anyone who visited the Instagram profile or engaged with Reels but didn't book.</p>
+        </div>
+      </div>
+      <div class="funnel-stage">
+        <div class="stage-badge stage-retain">Retain</div>
+        <div class="stage-content">
+          <h3>Build a community that keeps members coming back</h3>
+          <p>WhatsApp broadcast group for members with weekly schedules, motivational content, and exclusive early-bird offers. Monthly "Member of the Month" feature on Instagram. Referral programme: bring a friend, get one class free.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="local-box">
+      <h3>Why hyperlocal changes everything</h3>
+      <p>A national brand targets millions with a ₹10L budget. A local studio targets 50,000 people within 5 km with ₹15,000/month — and wins by being more relevant, more personal, and more present in their neighbourhood than any national chain can be. The strategy here was neighbourhood dominance, not reach maximisation.</p>
+    </div>
+
+    <div class="section-label" style="margin-top:2rem;">Tools used</div>
+    <div class="tools-grid">
+      <span class="tool-tag">Meta Ads Manager</span>
+      <span class="tool-tag">Google My Business</span>
+      <span class="tool-tag">Google Keyword Planner</span>
+      <span class="tool-tag">Canva</span>
+      <span class="tool-tag">WhatsApp Business</span>
+      <span class="tool-tag">Instagram Insights</span>
+      <span class="tool-tag">Google Analytics 4</span>
+      <span class="tool-tag">Meta Audience Insights</span>
+    </div>
+  </div>
+
+  <!-- AUDIENCE -->
+  <div class="section">
+    <div class="section-label">03 — Audience</div>
+    <h2>Three personas, one neighbourhood</h2>
+    <p>Porur has a specific demographic mix: IT professionals, homemakers, and college students. Each needed a different message for the same studio.</p>
+
+    <div class="persona-grid">
+      <div class="persona-card">
+        <h3>Persona A — The Stressed IT Professional</h3>
+        <ul>
+          <li>Age 25–35, works in Porur/Guindy IT corridor</li>
+          <li>Sedentary job, back pain, high stress</li>
+          <li>Wants results quickly, time-sensitive</li>
+          <li>Motivated by: stress relief + productivity</li>
+          <li>Best platform: Instagram Reels + Google Search</li>
+          <li>Hook: "Yoga for people who sit all day"</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <h3>Persona B — The Wellness Homemaker</h3>
+        <ul>
+          <li>Age 30–45, Porur residential area</li>
+          <li>Seeks personal time and community</li>
+          <li>Flexible mornings, budget-conscious</li>
+          <li>Motivated by: community + well-being</li>
+          <li>Best platform: Facebook feed + WhatsApp</li>
+          <li>Hook: "Your hour. Your wellness. Your community."</li>
+        </ul>
+      </div>
+      <div class="persona-card">
+        <h3>Persona C — The Fitness Explorer</h3>
+        <ul>
+          <li>Age 20–28, college student or early career</li>
+          <li>Tried gym, wants something different</li>
+          <li>Price-sensitive, social media native</li>
+          <li>Motivated by: aesthetics + flexibility</li>
+          <li>Best platform: Instagram Stories + Reels</li>
+          <li>Hook: "Not your grandmother's yoga"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="section">
+    <div class="section-label">04 — Content Strategy</div>
+    <h2>Content that builds a community</h2>
+    <p>For a local fitness brand, organic content is as important as paid ads. The content plan was built around 4 pillars designed to attract, educate, and retain.</p>
+
+    <div class="content-grid">
+      <div class="content-card">
+        <div class="content-type">Pillar 01 — Educate</div>
+        <h3>Yoga tips & benefits</h3>
+        <p>Weekly Reels: "3 poses for lower back pain," "Morning yoga routine for Chennai summers." Positions the studio as an expert, not just a service.</p>
+      </div>
+      <div class="content-card">
+        <div class="content-type">Pillar 02 — Humanise</div>
+        <h3>Behind the scenes</h3>
+        <p>Instructor introductions, class setup videos, "A day at Team Fitness." Makes the studio feel approachable to people who are nervous about joining.</p>
+      </div>
+      <div class="content-card">
+        <div class="content-type">Pillar 03 — Social proof</div>
+        <h3>Member stories</h3>
+        <p>Monthly member spotlight: their story, their progress, their favourite class. Real people > stock photos. Drives word-of-mouth within Porur community.</p>
+      </div>
+      <div class="content-card">
+        <div class="content-type">Pillar 04 — Local</div>
+        <h3>Chennai-specific content</h3>
+        <p>"Yoga before Porur traffic," "Beat the Chennai heat with evening yin yoga." Hyper-relevant content makes the algorithm serve it to the right local audience.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATIVE -->
+  <div class="section" id="creative">
+    <div class="section-label">05 — Creative Direction</div>
+    <h2>The creative hooks</h2>
+    <p>Three different hooks for three different personas — same brand, different emotional entry points.</p>
+
+    <div class="creative-box">
+      <div class="creative-hook">"Find Your <span>Balance</span> — Right Here in Porur"</div>
+      <div class="creative-rationale">
+        <p>The local name "Porur" in the headline does two things: it signals extreme relevance to the target audience, and it tells the Meta algorithm exactly who to show it to.</p>
+        <p>Used for Persona A (IT professionals) — speaks to work-life balance without being preachy.</p>
+        <p>Secondary hooks: "Yoga for people who sit all day" (Persona A) · "Your hour. Your wellness." (Persona B) · "Not your grandmother's yoga" (Persona C)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="section" id="results">
+    <div class="section-label">06 — Projected Results & Learnings</div>
+    <h2>What the data projected</h2>
+    <p>KPIs forecasted using Meta's local awareness campaign estimator, Google My Business insights benchmarks for fitness studios in Chennai, and published local fitness marketing benchmarks for Tier 1 Indian cities.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-number">30%</div><div class="kpi-desc">Projected increase in trial class bookings over 60 days</div></div>
+      <div class="kpi-card"><div class="kpi-number">40%</div><div class="kpi-desc">Expected improvement in Google Maps search visibility</div></div>
+      <div class="kpi-card"><div class="kpi-number">3x</div><div class="kpi-desc">Instagram follower growth from local content strategy over 90 days</div></div>
+      <div class="kpi-card"><div class="kpi-number">25%</div><div class="kpi-desc">Projected WhatsApp community member conversion to paid membership</div></div>
+    </div>
+
+    <div class="learning-list">
+      <div class="learning-item">
+        <div class="learning-num">1</div>
+        <p><strong>Hyperlocal copy outperforms generic fitness ads.</strong> Mentioning "Porur" in the ad headline increases relevance score dramatically — the audience immediately knows this is for them, not a national chain.</p>
+      </div>
+      <div class="learning-item">
+        <div class="learning-num">2</div>
+        <p><strong>WhatsApp is India's most underused retention tool.</strong> For local service businesses, a WhatsApp broadcast group costs ₹0 and retains members better than any paid retargeting campaign — because it feels personal, not promotional.</p>
+      </div>
+      <div class="learning-item">
+        <div class="learning-num">3</div>
+        <p><strong>Google My Business is free SEO for local businesses.</strong> Most local studios ignore GMB. A fully optimised profile with weekly posts, photos, and responses to reviews can generate 30–40% of bookings with zero ad spend.</p>
+      </div>
+      <div class="learning-item">
+        <div class="learning-num">4</div>
+        <p><strong>Retention campaigns matter as much as acquisition.</strong> Acquiring a new yoga student costs 5x more than retaining an existing one. The referral programme and member spotlight content directly address churn — not just growth.</p>
+      </div>
+      <div class="learning-item">
+        <div class="learning-num">5</div>
+        <p><strong>Three personas, three messages — same budget.</strong> Splitting one campaign into three ad sets with persona-specific copy costs the same as running one generic ad — but dramatically improves relevance and reduces cost per click.</p>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+<footer>
+  Built by Bhuvaneshwari Bakthavachalu · Chennai ·
+  <a href="https://linkedin.com/in/bhuvaneshwari-bakthavachalu" style="color:inherit;">LinkedIn</a>
+</footer>
+
+</body>
+</html>
