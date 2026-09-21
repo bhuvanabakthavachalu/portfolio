@@ -3,361 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apollo Dental Clinic — Campaign Case Study | Bhuvaneshwari</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --cream: #FAF8F4;
-    --ink: #1A1714;
-    --ink-soft: #4A4540;
-    --ink-muted: #8A8480;
-    --teal: #0F6E56;
-    --teal-light: #E1F5EE;
-    --teal-mid: #1D9E75;
-    --coral: #D85A30;
-    --coral-light: #FAECE7;
-    --amber: #BA7517;
-    --amber-light: #FAEEDA;
-    --border: rgba(26,23,20,0.1);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'DM Sans', system-ui, sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--sans);
-    background: var(--cream);
-    color: var(--ink);
-    font-size: 16px;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--cream);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 56px;
-  }
-  .nav-name {
-    font-family: var(--serif);
-    font-size: 16px;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--ink-muted);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--ink); }
-
-  /* HERO */
-  .hero {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal);
-    background: var(--teal-light);
-    padding: 4px 12px;
-    border-radius: 100px;
-    margin-bottom: 1.5rem;
-  }
-  .hero h1 {
-    font-family: var(--serif);
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    line-height: 1.2;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
-    max-width: 700px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--teal);
-  }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--ink-soft);
-    max-width: 560px;
-    margin-bottom: 2.5rem;
-    line-height: 1.75;
-  }
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-  }
-  .meta-item { display: flex; flex-direction: column; gap: 2px; }
-  .meta-label { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
-  .meta-value { font-size: 14px; font-weight: 500; color: var(--ink); }
-
-  /* MAIN LAYOUT */
-  .page { max-width: 860px; margin: 0 auto; padding: 0 2rem 6rem; }
-
-  /* SECTION */
-  .section { padding: 3.5rem 0; border-bottom: 1px solid var(--border); }
-  .section:last-child { border-bottom: none; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 1rem;
-  }
-  .section h2 {
-    font-family: var(--serif);
-    font-size: 1.75rem;
-    color: var(--ink);
-    margin-bottom: 1.25rem;
-    line-height: 1.3;
-  }
-  .section p {
-    color: var(--ink-soft);
-    margin-bottom: 1rem;
-    max-width: 640px;
-  }
-
-  /* KPI CARDS */
-  .kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 12px;
-    margin: 2rem 0;
-  }
-  .kpi-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem 1rem;
-    text-align: center;
-  }
-  .kpi-number {
-    font-family: var(--serif);
-    font-size: 2.25rem;
-    color: var(--teal);
-    line-height: 1;
-    margin-bottom: 6px;
-  }
-  .kpi-desc {
-    font-size: 12px;
-    color: var(--ink-muted);
-    line-height: 1.5;
-  }
-
-  /* FUNNEL */
-  .funnel { margin: 2rem 0; }
-  .funnel-stage {
-    display: flex;
-    gap: 1.25rem;
-    margin-bottom: 1rem;
-    align-items: flex-start;
-  }
-  .stage-badge {
-    flex-shrink: 0;
-    width: 88px;
-    text-align: center;
-    padding: 6px 0;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    margin-top: 2px;
-  }
-  .stage-awareness { background: var(--teal-light); color: #085041; }
-  .stage-consideration { background: var(--amber-light); color: #633806; }
-  .stage-conversion { background: var(--coral-light); color: #712B13; }
-  .stage-content h3 { font-size: 15px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-  .stage-content p { font-size: 14px; color: var(--ink-soft); margin: 0; max-width: 100%; }
-
-  /* TOOLS */
-  .tools-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 1.5rem 0;
-  }
-  .tool-tag {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--ink-soft);
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 5px 14px;
-  }
-
-  /* AUDIENCE */
-  .audience-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-    margin: 1.5rem 0;
-  }
-  .audience-card {
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-  }
-  .audience-card h3 { font-size: 14px; font-weight: 500; margin-bottom: 8px; color: var(--ink); }
-  .audience-card ul { list-style: none; }
-  .audience-card li {
-    font-size: 13px;
-    color: var(--ink-soft);
-    padding: 3px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .audience-card li::before {
-    content: '';
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--teal-mid);
-    flex-shrink: 0;
-  }
-
-  /* CREATIVE SECTION */
-  .creative-box {
-    background: var(--ink);
-    border-radius: 16px;
-    padding: 2.5rem;
-    margin: 1.5rem 0;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    align-items: center;
-  }
-  .creative-hook {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.75rem;
-    color: #fff;
-    flex: 1;
-    min-width: 200px;
-    line-height: 1.3;
-  }
-  .creative-hook span { color: var(--teal-mid); }
-  .creative-rationale {
-    flex: 1;
-    min-width: 200px;
-  }
-  .creative-rationale p {
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    margin-bottom: 0.75rem;
-    max-width: 100%;
-  }
-  .creative-rationale p:last-child { margin: 0; }
-
-  /* LEARNINGS */
-  .learning-list { margin: 1.5rem 0; }
-  .learning-item {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
-    align-items: flex-start;
-  }
-  .learning-num {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background: var(--teal-light);
-    color: var(--teal);
-    font-size: 13px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2px;
-  }
-  .learning-item p { font-size: 15px; color: var(--ink-soft); margin: 0; }
-  .learning-item strong { color: var(--ink); font-weight: 500; }
-
-  /* CTA */
-  .cta-section {
-    background: var(--teal);
-    border-radius: 16px;
-    padding: 3rem;
-    text-align: center;
-    margin-top: 3rem;
-  }
-  .cta-section h2 {
-    font-family: var(--serif);
-    font-size: 1.75rem;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-  .cta-section p { color: rgba(255,255,255,0.75); margin-bottom: 1.75rem; max-width: 100%; }
-  .cta-btn {
-    display: inline-block;
-    background: #fff;
-    color: var(--teal);
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s;
-  }
-  .cta-btn:hover { opacity: 0.9; }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 2rem;
-    font-size: 13px;
-    color: var(--ink-muted);
-    border-top: 1px solid var(--border);
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(18px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero { animation: fadeUp 0.6s ease both; }
-  .section { animation: fadeUp 0.5s ease both; }
-
-  @media (max-width: 600px) {
-    nav { padding: 0 1rem; }
-    .nav-links { gap: 1rem; }
-    .hero, .page { padding-left: 1.25rem; padding-right: 1.25rem; }
-    .creative-box { padding: 1.75rem; }
-    .cta-section { padding: 2rem 1.5rem; }
-  }
-</style>
+<title>Apollo Dental — Multi-City Acquisition Campaign | Bhuvaneshwari</title>
+<link rel="stylesheet" href="../case-study.css">
 </head>
 <body>
 
 <nav>
-  <a class="nav-name" href="#">Bhuvaneshwari B.</a>
+  <a class="nav-name" href="../index.html">Bhuvaneshwari B.</a>
   <ul class="nav-links">
     <li><a href="#overview">Overview</a></li>
     <li><a href="#strategy">Strategy</a></li>
@@ -367,199 +19,220 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">Case Study — Healthcare Advertising</div>
-  <h1>Growing Apollo Dental's patient base through <em>full-funnel paid campaigns</em></h1>
-  <p class="hero-sub">A performance marketing campaign designed to drive appointment bookings for Apollo Dental Clinic by targeting health-conscious women across Tier 1 & Tier 2 cities.</p>
+  <div class="hero-tag">Case Study · Healthcare Advertising · Self-Directed Strategic Rebuild</div>
+  <h1>Rebuilding Apollo Dental's acquisition strategy as an <em>always-on, multi-city campaign</em></h1>
+  <p class="hero-sub">An independent rebuild of my dental-industry ad plan — evergreen rather than seasonal, phased across 5 real Apollo Dental cities, with a real technical SEO audit and compliance considerations most fresher plans skip.</p>
   <div class="hero-meta">
-    <div class="meta-item">
-      <span class="meta-label">Role</span>
-      <span class="meta-value">Campaign Strategist</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Sector</span>
-      <span class="meta-value">Healthcare · Dental</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Platforms</span>
-      <span class="meta-value">Meta Ads · Google Ads</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Geography</span>
-      <span class="meta-value">Tier 1 & Tier 2 India</span>
-    </div>
-    <div class="meta-item">
-      <span class="meta-label">Year</span>
-      <span class="meta-value">2025</span>
-    </div>
+    <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Campaign Strategist</span></div>
+    <div class="meta-item"><span class="meta-label">Sector</span><span class="meta-value">Healthcare · Dental</span></div>
+    <div class="meta-item"><span class="meta-label">Structure</span><span class="meta-value">Always-on, multi-city</span></div>
+    <div class="meta-item"><span class="meta-label">Platforms</span><span class="meta-value">Google · Meta Ads</span></div>
+    <div class="meta-item"><span class="meta-label">Geography</span><span class="meta-value">5 Indian metros</span></div>
+    <div class="meta-item"><span class="meta-label">Year</span><span class="meta-value">2026</span></div>
   </div>
 </div>
 
 <div class="page">
 
-  <!-- OVERVIEW -->
-  <div class="section" id="overview">
-    <div class="section-label">01 — The Brief</div>
-    <h2>The challenge</h2>
-    <p>Apollo Dental Clinic needed to increase appointment bookings among women aged 25–45 in urban and semi-urban India. The dental care category suffers from low awareness and high purchase hesitation — most people only visit a dentist when in pain, not for preventive care.</p>
-    <p>The campaign goal was to shift perception: from reactive ("I go when it hurts") to proactive ("My smile is worth investing in") — and drive measurable action through paid digital channels.</p>
+  <div class="section" style="padding-bottom: 1.5rem;">
+    <div class="note-box"><strong>Note:</strong> Apollo Dental (apollodental.in) is a real, operating dental chain — part of Apollo Hospitals Group, with 220+ locations across 45 Indian cities. This is a self-directed educational project built around their real, public-facing business and website. It is not an actual client engagement or an Apollo Dental–commissioned campaign.</div>
+  </div>
 
+  <div class="section" id="overview">
+    <div class="section-label">01 · The Brief & Objective</div>
+    <h2>Building the best ad plan for a healthcare business</h2>
+    <p>This started as a course exercise: prepare the best ad plan for a healthcare business, with a suggested budget, promoted across India, including Avg. CPC, Cost/Conversion, and expected Leads. I rebuilt it from scratch as I'd approach it professionally — an always-on plan rather than a seasonal push, phased geographically instead of spread thin nationwide on day one.</p>
+    <p><strong>Objective:</strong> generate qualified appointment leads for Apollo Dental across 5 real clinic cities, at a sustainable and improving cost-per-lead. <strong>Primary KPI:</strong> Cost per Lead (CPL). <strong>Secondary KPI:</strong> lead-to-booked-appointment rate.</p>
     <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-number">25%</div>
-        <div class="kpi-desc">Projected engagement rate lift vs category benchmark</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-number">15%</div>
-        <div class="kpi-desc">Forecasted CTR improvement on Meta ad sets</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-number">3</div>
-        <div class="kpi-desc">Funnel stages designed end-to-end</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-number">2</div>
-        <div class="kpi-desc">Distinct audience personas targeted</div>
-      </div>
+      <div class="kpi-card"><div class="kpi-number">5</div><div class="kpi-desc">Real Apollo Dental cities used for Phase 1 targeting</div></div>
+      <div class="kpi-card"><div class="kpi-number">3</div><div class="kpi-desc">Channels executed in parallel</div></div>
+      <div class="kpi-card"><div class="kpi-number">₹4,00,000</div><div class="kpi-desc">Proposed monthly budget — my own recommendation</div></div>
     </div>
   </div>
 
-  <!-- STRATEGY -->
-  <div class="section" id="strategy">
-    <div class="section-label">02 — The Strategy</div>
-    <h2>Full-funnel campaign architecture</h2>
-    <p>Rather than running a single promotional ad, I designed a 3-stage funnel to guide potential patients from awareness to booking — matching message intensity to audience readiness.</p>
+  <div class="section">
+    <div class="section-label">02 · SWOT & Competitive Landscape</div>
+    <h2>Where Apollo Dental stands</h2>
+    <div class="swot-grid">
+      <div class="swot-card strengths"><div class="label">Strengths</div><p>Trusted brand with pan-India presence, advanced technology and skilled professionals, strong testimonials and word-of-mouth.</p></div>
+      <div class="swot-card weaknesses"><div class="label">Weaknesses</div><p>Perceived as costlier than local clinics, limited focus on younger demographics, dependence on promotions.</p></div>
+      <div class="swot-card opportunities"><div class="label">Opportunities</div><p>Rising oral health awareness in India, growing demand for aesthetic dentistry, potential wellness/influencer partnerships.</p></div>
+      <div class="swot-card threats"><div class="label">Threats</div><p>Local and international chains expanding into India, volatile digital ad costs, unpredictable healthcare spending.</p></div>
+    </div>
+    <table class="ledger">
+      <thead><tr><th>Competitor</th><th>Strengths</th><th>Weaknesses</th></tr></thead>
+      <tbody>
+        <tr><td>Clove Dental</td><td>Affordable pricing, large presence, good digital campaigns</td><td>Limited focus on premium services</td></tr>
+        <tr><td>32 Smiles Dental Care</td><td>Strong emphasis on aesthetic procedures</td><td>Niche, limited geographic reach</td></tr>
+        <tr><td>Local clinics</td><td>Personalized service and convenience</td><td>No brand recognition, limited ad capability</td></tr>
+      </tbody>
+    </table>
+  </div>
 
+  <div class="section">
+    <div class="section-label">03 · Audience & Targeting</div>
+    <h2>Who we're targeting</h2>
+    <div class="audience-grid">
+      <div class="creative-box" style="margin: 0;"><p style="font-weight: 600; margin-bottom: 0.4rem;">Core audience</p><p style="margin: 0;">Adults 25–55, urban India, moderate-to-high disposable income. Targeted on demographics and general wellness interests only.</p></div>
+      <div class="creative-box" style="margin: 0;"><p style="font-weight: 600; margin-bottom: 0.4rem;">Secondary audience</p><p style="margin: 0;">Parents/household decision-makers searching for family dental care — often the highest-value segment.</p></div>
+    </div>
+    <div class="note-box" style="margin-top: 1.25rem;"><strong>Compliance note:</strong> Meta's advertising policy prohibits targeting or messaging that asserts or implies a health condition or need — including inferred ones. Targeting here is demographic and interest-based only, never on inferred health status.</div>
+  </div>
+
+  <div class="section" id="strategy">
+    <div class="section-label">04 · Geographic Rollout Strategy</div>
+    <h2>"Promote across India" doesn't mean spend evenly, day one</h2>
+    <p>A brief that says "promote across India" doesn't mean spend evenly nationwide from launch — that wastes budget generating leads in cities with no clinic to convert them.</p>
     <div class="funnel">
       <div class="funnel-stage">
-        <div class="stage-badge stage-awareness">Awareness</div>
-        <div class="stage-content">
-          <h3>Build emotional connection at the top</h3>
-          <p>Meta Reels and Google Display ads using aspirational visuals and the core hook "Let Your Smile Do the Talking." Goal: reach cold audiences and create positive brand association with Apollo Dental.</p>
-        </div>
+        <div class="stage-badge" style="background: var(--forest-light); color: var(--forest-dark);">Phase 1 · Mo. 1–3</div>
+        <div class="stage-content"><h3>Concentrate in real clinic cities</h3><p>100% of budget across Apollo Dental's 5 established metros — Mumbai, Delhi NCR, Bangalore, Chennai, Hyderabad. Establish real CPL benchmarks first.</p></div>
       </div>
       <div class="funnel-stage">
-        <div class="stage-badge stage-consideration">Consider</div>
-        <div class="stage-content">
-          <h3>Educate and build trust in the middle</h3>
-          <p>Retargeted carousel ads featuring before/after results, doctor credentials, and patient testimonials. Google Search ads targeting high-intent keywords like "best dentist near me" and "teeth whitening Chennai."</p>
-        </div>
+        <div class="stage-badge" style="background: var(--brass-light); color: var(--brass);">Phase 2 · Mo. 4+</div>
+        <div class="stage-content"><h3>Expand using real data</h3><p>Reallocate budget toward whichever cities beat their estimated CPL before adding new geographies — evidence-led, not a guess.</p></div>
       </div>
-      <div class="funnel-stage">
-        <div class="stage-badge stage-conversion">Convert</div>
-        <div class="stage-content">
-          <h3>Drive appointments at the bottom</h3>
-          <p>Conversion-optimised Meta Lead Ads with a pre-filled appointment booking form. Urgency messaging ("Book your free consultation this week") and a strong CTA to reduce friction at the final step.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="section-label" style="margin-top: 2rem;">Tools used</div>
-    <div class="tools-grid">
-      <span class="tool-tag">Meta Ads Manager</span>
-      <span class="tool-tag">Google Ads</span>
-      <span class="tool-tag">Google Keyword Planner</span>
-      <span class="tool-tag">Canva</span>
-      <span class="tool-tag">Adobe Premiere Pro</span>
-      <span class="tool-tag">Google Analytics 4</span>
-      <span class="tool-tag">Meta Audience Insights</span>
     </div>
   </div>
 
-  <!-- AUDIENCE -->
   <div class="section">
-    <div class="section-label">03 — Audience</div>
-    <h2>Who we targeted</h2>
-    <p>Audience segmentation was built around two distinct personas with different pain points and messaging needs.</p>
-
-    <div class="audience-grid">
-      <div class="audience-card">
-        <h3>Persona A — The Urban Professional</h3>
-        <ul>
-          <li>Women, 28–38, metro cities</li>
-          <li>High disposable income</li>
-          <li>Motivated by appearance & confidence</li>
-          <li>Responsive to aspirational messaging</li>
-          <li>Platform: Meta (Instagram feed & Reels)</li>
-        </ul>
-      </div>
-      <div class="audience-card">
-        <h3>Persona B — The Health-Conscious Mother</h3>
-        <ul>
-          <li>Women, 32–45, Tier 2 cities</li>
-          <li>Family health decision-maker</li>
-          <li>Motivated by trust & safety</li>
-          <li>Responsive to doctor credibility</li>
-          <li>Platform: Google Search + Meta Feed</li>
-        </ul>
-      </div>
-    </div>
+    <div class="section-label">05 · Channel Strategy</div>
+    <h2>Platform-by-platform execution</h2>
+    <table class="ledger">
+      <thead><tr><th>Stage</th><th>Channel &amp; Objective</th><th>Purpose</th></tr></thead>
+      <tbody>
+        <tr><td>Local visibility</td><td>Google Business Profile — organic</td><td>Free, high-intent Maps map-pack visibility</td></tr>
+        <tr><td>Reach</td><td>Google Display + YouTube — Awareness, CPM</td><td>Cheap reach before someone actively searches</td></tr>
+        <tr><td>Intent capture</td><td>Google Search — Maximize Conversions</td><td>Highest-intent traffic</td></tr>
+        <tr><td>Cold social</td><td>Meta — Reach objective</td><td>Build pixel data and familiarity</td></tr>
+        <tr><td>Warm retarget</td><td>Meta — Leads objective, native form</td><td>Objective correctly matched to mechanism</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13.5px; color: var(--ink-muted);">Google's Local Services Ads is deliberately excluded — not confirmed available for healthcare even where the product exists (US/Canada).</p>
   </div>
 
-  <!-- CREATIVE -->
-  <div class="section" id="creative">
-    <div class="section-label">04 — Creative Direction</div>
-    <h2>The creative hook</h2>
-    <p>Effective healthcare advertising avoids clinical coldness. The creative strategy leaned into emotional aspiration rather than fear of dental problems.</p>
+  <div class="section" id="seo">
+    <div class="section-label">06 · SEO Audit Findings</div>
+    <h2>A real Screaming Frog crawl of apollodental.in</h2>
+    <p>Run against Apollo Dental's actual live website — not a single city page. apollodental.in has 220+ locations across 45 cities, so these are site-wide totals across the full crawl.</p>
+    <table class="ledger">
+      <thead><tr><th>Issue</th><th>Type</th><th>Priority</th><th>URLs</th></tr></thead>
+      <tbody>
+        <tr><td>Page Titles: Missing</td><td>Issue</td><td style="color: var(--red-ink); font-family: var(--sans);">High</td><td>5</td></tr>
+        <tr><td>Canonicals: Contains Fragment URL</td><td>Issue</td><td style="color: var(--red-ink); font-family: var(--sans);">High</td><td>1</td></tr>
+        <tr><td>H1: Missing</td><td>Issue</td><td style="color: var(--brass); font-family: var(--sans);">Medium</td><td>49</td></tr>
+        <tr><td>H1: Multiple</td><td>Warning</td><td style="color: var(--brass); font-family: var(--sans);">Medium</td><td>120</td></tr>
+        <tr><td>Page Titles: Duplicate</td><td>Opportunity</td><td style="color: var(--brass); font-family: var(--sans);">Medium</td><td>6</td></tr>
+        <tr><td>Canonicals: Missing</td><td>Warning</td><td style="color: var(--brass); font-family: var(--sans);">Medium</td><td>1</td></tr>
+        <tr><td>Content: Low Content Pages</td><td>Opportunity</td><td style="color: var(--brass); font-family: var(--sans);">Medium</td><td>24</td></tr>
+        <tr><td>Meta Description: Missing</td><td>Opportunity</td><td style="font-family: var(--sans);">Low</td><td>8</td></tr>
+        <tr><td>URL: Uppercase</td><td>Warning</td><td style="font-family: var(--sans);">Low</td><td>15</td></tr>
+        <tr><td>Images: Missing Alt Attribute</td><td>Issue</td><td style="font-family: var(--sans);">Low</td><td>4</td></tr>
+      </tbody>
+    </table>
+    <p><strong>What I'd fix first:</strong> the 5 missing page titles and the fragment-URL canonical — both block indexing directly. The H1 issues affect the most URLs but are likely a templating fix, not 169 one-off edits.</p>
+  </div>
 
+  <div class="section">
+    <div class="section-label">07 · Keyword Strategy & Ad Copy</div>
+    <h2>Evergreen — not tied to any seasonal offer</h2>
+    <ul style="color: var(--ink-soft); margin: 0 0 1.25rem 1.25rem; max-width: 640px;">
+      <li><strong>Branded:</strong> "Apollo Dental Clinic," "Apollo Dental appointment," "Apollo Dental [city]"</li>
+      <li><strong>Generic:</strong> "dentist near me," "dental clinic near me," "teeth cleaning cost"</li>
+      <li><strong>Long-tail:</strong> "best dentist for teeth whitening in [city]," "affordable dental checkup near me"</li>
+      <li><strong>Negative keywords:</strong> "dental college," "dentist jobs," "dental assistant salary," "free dental camp"</li>
+    </ul>
+    <div class="creative-box"><p style="margin-bottom: 0.5rem;"><strong>Google Search:</strong> Trusted Dental Care | Book Today — MDS-Certified Dentists</p><p style="margin: 0;">Painless treatments, transparent pricing, appointments across 5 metros. Book your free consultation now.</p><p style="margin-top: 0.75rem; font-size: 13px; color: var(--ink-muted);">Ad extensions: Call, Location, Sitelinks</p></div>
+    <div class="creative-box"><p style="margin-bottom: 0.5rem;"><strong>Meta — Cold Reach:</strong> Your smile deserves expert care. MDS-certified dentists across 5 Indian cities.</p><p style="margin: 0;">CTA: Learn More</p></div>
+    <div class="creative-box" style="margin-bottom: 0;"><p style="margin-bottom: 0.5rem;"><strong>Meta — Warm Retarget:</strong> Still thinking about that dental visit? Book a free consultation — quick, easy, no waiting rooms.</p><p style="margin: 0;">CTA: Book Now (native Lead Form, pre-filled)</p></div>
+  </div>
+
+  <div class="section" id="creatives-gallery">
+    <div class="section-label">08 · Featured Ad Creatives</div>
+    <h2>Coded mockups, not AI-generated images</h2>
+    <p>Generic initials instead of a scraped logo, language checked against the compliance notes in Section 12.</p>
+    <div class="creatives-row">
+      <div>
+        <div class="ad-mock" style="padding: 1.25rem 1.5rem;">
+          <div style="font-size: 12px; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;"><span style="background: #e8f0fe; color: #1a73e8; font-weight: 700; font-size: 11px; padding: 1px 5px; border-radius: 3px;">Ad</span><span style="color:#202124;">apollodental.in</span></div>
+          <div style="font-size: 16px; color: #1a0dab; line-height: 1.3; margin-bottom: 4px;">Trusted Dental Care | Book Today</div>
+          <div style="font-size: 13px; color: #4d5156;">Painless treatments, transparent pricing, appointments across 5 metros.</div>
+        </div>
+        <p class="ad-caption">Google Search · intent-capture</p>
+      </div>
+      <div>
+        <div class="ad-mock">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 12px 14px;">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--forest-light); display: flex; align-items: center; justify-content: center; color: var(--forest); font-weight: 700;">A</div>
+            <div><div style="font-size: 13px; font-weight: 600;">Apollo Dental</div><div style="font-size: 11px; color: #65676b;">Sponsored</div></div>
+          </div>
+          <div style="padding: 0 14px 10px; font-size: 13px;">Your smile deserves expert care. MDS-certified dentists across 5 Indian cities.</div>
+          <div style="background: linear-gradient(135deg,#eaf6f1,#d9ede4); padding: 2rem 1.5rem; text-align: center;"><div style="font-family: var(--serif); font-size: 1.35rem; color: var(--forest);">Let Your Smile Do the Talking</div></div>
+          <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid var(--border);"><div style="font-size: 12px; color: #65676b;">apollodental.in</div><div style="background: #e7f3ff; color: #1877f2; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">Learn More</div></div>
+        </div>
+        <p class="ad-caption">Facebook feed · cold reach</p>
+      </div>
+      <div>
+        <div class="ad-mock">
+          <div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px;">
+            <div style="width: 28px; height: 28px; border-radius: 50%; background: var(--forest-light); display: flex; align-items: center; justify-content: center; color: var(--forest); font-weight: 700; font-size: 12px;">A</div>
+            <div style="font-size: 13px; font-weight: 600;">apollodental <span style="font-weight: 400; color: #8e8e8e;">· Sponsored</span></div>
+          </div>
+          <div style="background: linear-gradient(160deg,#1F5C4A,#2A7A63); padding: 1.75rem 1.25rem; text-align: center; color: #fff;"><div style="font-family: var(--serif); font-size: 1.25rem; margin-bottom: 8px;">Still thinking about it?</div><div style="font-size: 12px; opacity: 0.9;">Book a free consultation — quick, easy, no waiting rooms.</div></div>
+          <div style="padding: 10px 12px;"><span style="display: inline-block; background: #efefef; color: #262626; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px;">Book Now</span></div>
+        </div>
+        <p class="ad-caption">Instagram feed · warm retarget</p>
+      </div>
+    </div>
+    <p style="font-size: 13px; color: var(--ink-muted); font-style: italic;">Educational project — not an actual Apollo Dental campaign.</p>
+  </div>
+
+  <div class="section" id="creative">
+    <div class="section-label">09 · Creative Direction</div>
+    <h2>The creative hook</h2>
+    <p>Effective healthcare advertising avoids clinical coldness.</p>
     <div class="creative-box">
       <div class="creative-hook">"Let Your <span>Smile</span> Do the Talking"</div>
-      <div class="creative-rationale">
-        <p>Chosen because it shifts focus from dental procedures (cold, clinical) to the outcome women actually care about — confidence and presence.</p>
-        <p>The line works across all funnel stages: aspirational at awareness, reassuring at consideration, motivating at conversion.</p>
-        <p>Visuals used warm tones, natural lighting, and real-looking smiles — avoiding the overly staged look common in dental advertising.</p>
-      </div>
+      <div class="creative-rationale"><p>Shifts focus from dental procedures to the outcome people actually care about — confidence and presence. Unlike a seasonal hook, it isn't tied to any date, so it works as a genuine always-on line.</p></div>
     </div>
   </div>
 
-  <!-- RESULTS -->
+  <div class="section">
+    <div class="section-label">10 · Budget & Projected Performance</div>
+    <h2>Where the ₹4,00,000/month goes</h2>
+    <p>My own recommendation as the strategist — the brief only asked for "suggested budgets."</p>
+    <table class="ledger">
+      <thead><tr><th>Channel</th><th>Budget</th><th>Avg. CPC</th><th>Cost/Conv.</th><th>Leads/mo</th></tr></thead>
+      <tbody>
+        <tr><td>Google Search</td><td>₹1,80,000</td><td>₹25–40</td><td>₹250–450</td><td>400–720</td></tr>
+        <tr><td>Facebook</td><td>₹1,20,000</td><td>₹8–15</td><td>₹150–300</td><td>400–800</td></tr>
+        <tr><td>Instagram</td><td>₹1,00,000</td><td>₹10–18</td><td>₹150–280</td><td>360–670</td></tr>
+        <tr><td>Total</td><td>₹4,00,000</td><td>—</td><td>~₹190–260</td><td>~1,150–2,190</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size: 13.5px; color: var(--ink-muted);">Industry-pattern CPC estimates for Indian dental/healthcare keyword auctions and Meta interest-targeting — not guarantees. Tracked weekly from week 1.</p>
+  </div>
+
   <div class="section" id="results">
-    <div class="section-label">05 — Projected Results & Learnings</div>
-    <h2>What the data projected</h2>
-    <p>KPIs were forecasted using Meta Ads Manager's audience reach estimator, Google Keyword Planner search volume data, and published healthcare industry benchmarks for dental category campaigns in India.</p>
-
-    <div class="kpi-grid">
-      <div class="kpi-card">
-        <div class="kpi-number">25%</div>
-        <div class="kpi-desc">Engagement rate uplift vs dental category average of 1.8%</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-number">15%</div>
-        <div class="kpi-desc">CTR improvement using emotional creative vs generic dental ads</div>
-      </div>
-      <div class="kpi-card">
-        <div class="kpi-number">2x</div>
-        <div class="kpi-desc">Expected lead quality from retargeted warm audiences vs cold</div>
-      </div>
-    </div>
-
-    <div class="learning-list">
-      <div class="learning-item">
-        <div class="learning-num">1</div>
-        <p><strong>Funnel thinking matters more than budget.</strong> A well-structured 3-stage campaign with ₹X will outperform a single-ad campaign with 3X because it meets the customer where they are emotionally.</p>
-      </div>
-      <div class="learning-item">
-        <div class="learning-num">2</div>
-        <p><strong>Healthcare audiences need trust signals early.</strong> Placing doctor credentials and clinic ratings in the consideration stage — not the conversion stage — significantly reduces objections at the bottom of the funnel.</p>
-      </div>
-      <div class="learning-item">
-        <div class="learning-num">3</div>
-        <p><strong>Emotional copy outperforms feature copy in Tier 2.</strong> "Let Your Smile Do the Talking" tested stronger in Tier 2 cities than clinical benefit messaging, suggesting aspirational hooks resonate across income levels.</p>
-      </div>
-      <div class="learning-item">
-        <div class="learning-num">4</div>
-        <p><strong>Lead Ads reduce friction dramatically.</strong> Pre-filled Meta Lead Ad forms are particularly effective for appointment bookings in healthcare, where users abandon external landing pages due to perceived data privacy concerns.</p>
-      </div>
-    </div>
+    <div class="section-label">11 · Measurement & Key Learnings</div>
+    <h2>What I'd track, and what I'd do differently</h2>
+    <p><strong>Weekly:</strong> CPL by channel/city, lead-to-booked-appointment rate, Search Impression Share. <strong>Call tracking:</strong> a unique tracking number per channel/city is needed before launch, since both Meta retarget and Search's call extension drive phone calls.</p>
+    <div class="learning-item"><div class="learning-num">1</div><p><strong>Splitting spend across platforms diversifies risk.</strong> No single platform's cost swings sink the whole campaign.</p></div>
+    <div class="learning-item"><div class="learning-num">2</div><p><strong>Campaign objective and creative CTA need to match.</strong> A "Leads" objective paired with a "Call now" CTA is a real mismatch I found reviewing my own earlier work — fixed with a proper native Lead Form.</p></div>
+    <div class="learning-item"><div class="learning-num">3</div><p><strong>"Promote across India" isn't the same as spending evenly across India.</strong> Phasing into real clinic cities first satisfies the brief without wasting budget.</p></div>
   </div>
 
-
+  <div class="section">
+    <div class="section-label">12 · Compliance Flags Raised Before Launch</div>
+    <h2>What I'd route to legal before going live</h2>
+    <p style="font-size: 14px; color: var(--ink-muted); margin-bottom: 1rem;">A marketer's job is to flag these risks and route them to legal/compliance, not personally resolve them.</p>
+    <div class="flag-box"><strong>Dental Council of India Code of Ethics</strong><p style="margin-top: 0.4rem;">DCI regulations restrict advertising for the purpose of soliciting patients; State Dental Councils have issued notices against clinics for this. Sign-off needed on ad copy — brand-level messaging, no superlative claims.</p></div>
+    <div class="flag-box"><strong>DPDP Act 2023 &amp; Rules 2025</strong><p style="margin-top: 0.4rem;">Healthcare entities are data fiduciaries requiring explicit, informed consent to collect personal data. Lead forms need a consent checkbox and privacy notice link.</p></div>
+  </div>
 
 </div>
 
-<footer>
-  Built by Bhuvaneshwari Bakthavachalu · Chennai · 
-  <a href="https://linkedin.com/in/bhuvaneshwari-bakthavachalu" style="color: inherit;">LinkedIn</a>
-</footer>
+<footer>Built by Bhuvaneshwari Bakthavachalu · Chennai · <a href="https://linkedin.com/in/bhuvaneshwari-bakthavachalu">LinkedIn</a></footer>
 
 </body>
 </html>
