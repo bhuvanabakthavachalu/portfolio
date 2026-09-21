@@ -535,7 +535,8 @@ body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   position: relative;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -779,6 +780,15 @@ body {
   padding: calc(var(--header-h) + 25px) 48px 40px;
 }
 
+@media (max-height: 780px) {
+  .slide-hero {
+    align-items: flex-start;
+  }
+  .hero-layout {
+    padding-top: calc(var(--header-h) + 12px);
+  }
+}
+
 .hero-location {
   font-size: 11px;
   font-weight: 600;
@@ -791,13 +801,13 @@ body {
 .hero-title {
   display: flex;
   flex-direction: column;
-  line-height: 0.92;
+  line-height: 1.05;
   margin-bottom: 20px;
 }
 
 .ht-line {
   font-family: var(--font-display);
-  font-size: clamp(50px, 8vw, 112px);
+  font-size: clamp(42px, 6vw, 80px);
   letter-spacing: -1px;
   color: var(--warm-brown);
   text-transform: lowercase;
@@ -817,10 +827,10 @@ body {
 
 .hero-sub {
   font-size: 15px;
-  line-height: 1.75;
+  line-height: 1.65;
   color: rgba(22, 33, 29, 0.68);
   max-width: 480px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 .hero-sub strong {
@@ -831,7 +841,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .skill-chip {
@@ -1902,36 +1912,35 @@ body {
   z-index: 10;
   width: 100%;
   max-width: 1100px;
-  padding: calc(var(--header-h) + 16px) 48px 56px;
+  padding: calc(var(--header-h) + 16px) 48px 24px;
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 56px;
-  align-items: center;
-  height: calc(100% - 44px);
+  align-items: start;
   min-width: 0;
 }
 
 .contact-left {
   min-width: 0;
-  overflow: hidden;
+  overflow-wrap: break-word;
 }
 
 .contact-title {
   display: flex;
   flex-direction: column;
   font-family: var(--font-display);
-  font-size: clamp(34px, 5vw, 64px);
-  letter-spacing: 2px;
-  line-height: 0.95;
+  font-size: clamp(32px, 4.2vw, 52px);
+  letter-spacing: 1px;
+  line-height: 1.12;
   margin-bottom: 16px;
   color: var(--cream);
 }
 
 .contact-title em {
   font-family: var(--font-cursive);
-  font-size: clamp(38px, 6vw, 80px);
+  font-style: italic;
+  font-size: clamp(34px, 4.6vw, 56px);
   color: var(--orange);
-  font-style: normal;
 }
 
 .contact-tagline {
@@ -2142,10 +2151,7 @@ div.cinfo-item:hover {
 
 /* Site Footer */
 .site-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: static;
   padding: 14px 48px;
   display: flex;
   align-items: center;
@@ -2230,6 +2236,11 @@ div.cinfo-item:hover {
 }
 
 @media (max-width: 720px) {
+
+  .reel-slide {
+    align-items: flex-start;
+    overflow-y: auto;
+  }
 
   .hero-layout,
   .work-content,
