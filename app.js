@@ -1,11 +1,12 @@
 /* ============================================================
    Bhuvaneshwari B. — Digital Marketing Portfolio
    Reel-style snap-scroll · Interactive JS
+   High-performance scrolling, reactive animations & contact form
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ─── Case study modal buttons ─── */
+  /* ─── Case study modal triggers ─── */
   const case1Btn = document.getElementById('case1Btn');
   const case2Btn = document.getElementById('case2Btn');
   if (case1Btn) {
@@ -44,52 +45,144 @@ document.addEventListener('DOMContentLoaded', () => {
     current = idx;
 
     /* Progress bar */
-    progress.style.width = ((idx / (total - 1)) * 100) + '%';
+    if (progress) {
+      progress.style.width = ((idx / Math.max(total - 1, 1)) * 100) + '%';
+    }
 
     /* Reel dots */
     dots.forEach((d, i) => d.classList.toggle('active', i === idx));
 
     /* Header theme */
-    header.classList.remove('light-slide', 'dark-slide');
-    header.classList.add(lightSlides.has(idx) ? 'light-slide' : 'dark-slide');
+    if (header) {
+      header.classList.remove('light-slide', 'dark-slide');
+      header.classList.add(lightSlides.has(idx) ? 'light-slide' : 'dark-slide');
+    }
 
     /* Active nav link (desktop & mobile) */
-    navLinks.forEach(l => l.classList.toggle('active', parseInt(l.dataset.slide) === idx));
-    mobLinks.forEach(l => l.classList.toggle('active', parseInt(l.dataset.slide) === idx));
+    navLinks.forEach(l => l.classList.toggle('active', parseInt(l.dataset.slide, 10) === idx));
+    mobLinks.forEach(l => l.classList.toggle('active', parseInt(l.dataset.slide, 10) === idx));
   }
 
-  /* Slightly slower, consistent scroll pace across browsers.
-     Native scrollIntoView({behavior:'smooth'}) duration varies by browser/device
-     and tends to feel quick — this gives explicit, tunable control.
-     Increase SCROLL_DURATION for a slower feel, decrease for faster. */
-  const SCROLL_DURATION = 650; // ms
+  /* ======================================================
+     SMOOTH SLIDE SCROLLING (CALM, CONTROLLED PACING)
+     Prevents fast-scroll skips and trackpad inertia runaway
+     ====================================================== */
+  const SLIDE_DURATION = 1.05; // seconds — calm, luxurious, unhurried pace
   let isAnimating = false;
+  let lastWheelTime = 0;
+  let wheelAccumulator = 0;
+  let wheelClearTimer = null;
 
-  function easeInOutQuad(t) {
-    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-  }
+  function scrollToSlide(idx, customDuration) {
+    if (idx < 0 || idx >= total) return;
+    if (isAnimating) return;
 
-  function scrollToSlide(idx) {
-    if (idx < 0 || idx >= total || isAnimating) return;
-    const startY = container.scrollTop;
     const targetY = slides[idx].offsetTop;
-    const distance = targetY - startY;
-    if (distance === 0) return;
+    const distance = Math.abs(targetY - container.scrollTop);
+
+    if (distance < 2) {
+      updateUI(idx);
+      return;
+    }
 
     isAnimating = true;
-    const startTime = performance.now();
+    updateUI(idx);
 
-    function step(now) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / SCROLL_DURATION, 1);
-      container.scrollTop = startY + distance * easeInOutQuad(progress);
-      if (progress < 1) {
-        requestAnimationFrame(step);
-      } else {
+    const dur = customDuration || SLIDE_DURATION;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.killTweensOf(container);
+      gsap.to(container, {
+        scrollTop: targetY,
+        duration: dur,
+        ease: 'power2.out',
+        overwrite: 'auto',
+        onComplete: () => {
+          container.scrollTop = targetY;
+          // Small settle buffer to absorb residual trackpad momentum
+          setTimeout(() => {
+            isAnimating = false;
+          }, 140);
+        }
+      });
+    } else {
+      container.scrollTo({ top: targetY, behavior: 'smooth' });
+      setTimeout(() => {
         isAnimating = false;
+      }, dur * 1000);
+    }
+  }
+
+  /* ======================================================
+     INTELLIGENT WHEEL & TRACKPAD NAVIGATION
+     Strict single-slide lock with complete inertia dampening
+     ====================================================== */
+  const WHEEL_THRESHOLD = 70; // Deliberate scroll intent required
+  const INERTIA_QUIET_PERIOD = 240; // ms of quiet required after wheel stops
+
+  window.addEventListener('wheel', (e) => {
+    // If modal is active or on touch-primary mobile screens, allow normal scrolling
+    if (document.querySelector('.case-study-modal.active')) return;
+    if (window.innerWidth <= 1024) return;
+
+    // Check if user is scrolling inside a scrollable child container
+    let el = e.target;
+    while (el && el !== container && el !== document.body) {
+      if (el.scrollHeight > el.clientHeight + 6) {
+        const atTop = el.scrollTop <= 0 && e.deltaY < 0;
+        const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 2 && e.deltaY > 0;
+        if (!atTop && !atBottom) {
+          return; // Allow internal element scroll
+        }
+      }
+      el = el.parentElement;
+    }
+
+    e.preventDefault();
+
+    const now = Date.now();
+    const timeSinceLastWheel = now - lastWheelTime;
+    lastWheelTime = now;
+
+    // While animating, absorb all wheel momentum completely
+    if (isAnimating) {
+      wheelAccumulator = 0;
+      return;
+    }
+
+    // Filter out residual decaying inertia pulses from previous gestures
+    if (timeSinceLastWheel < 40 && Math.abs(wheelAccumulator) === 0 && Math.abs(e.deltaY) < 25) {
+      return;
+    }
+
+    wheelAccumulator += e.deltaY;
+
+    // Trigger only when deliberate threshold is reached
+    if (Math.abs(wheelAccumulator) >= WHEEL_THRESHOLD) {
+      const direction = wheelAccumulator > 0 ? 1 : -1;
+      wheelAccumulator = 0;
+
+      const nextSlide = current + direction;
+      if (nextSlide >= 0 && nextSlide < total) {
+        scrollToSlide(nextSlide);
       }
     }
-    requestAnimationFrame(step);
+
+    // Reset accumulator when user pauses
+    clearTimeout(wheelClearTimer);
+    wheelClearTimer = setTimeout(() => {
+      wheelAccumulator = 0;
+    }, INERTIA_QUIET_PERIOD);
+  }, { passive: false });
+
+  /* Real-time progress bar update during scroll */
+  if (container) {
+    container.addEventListener('scroll', () => {
+      const maxScroll = container.scrollHeight - container.clientHeight;
+      if (progress && maxScroll > 0) {
+        progress.style.width = Math.min((container.scrollTop / maxScroll) * 100, 100) + '%';
+      }
+    }, { passive: true });
   }
 
   /* ======================================================
@@ -97,13 +190,13 @@ document.addEventListener('DOMContentLoaded', () => {
      ====================================================== */
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
-      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
-        const idx = parseInt(entry.target.dataset.index);
+      if (entry.isIntersecting) {
+        const idx = parseInt(entry.target.dataset.index, 10);
         updateUI(idx);
         activateSlide(entry.target, idx);
       }
     });
-  }, { threshold: 0.5, root: container });
+  }, { threshold: 0.45, root: container });
 
   slides.forEach(s => observer.observe(s));
 
@@ -114,6 +207,18 @@ document.addEventListener('DOMContentLoaded', () => {
     /* Generic animate-in elements */
     slide.querySelectorAll('.animate-in').forEach(el => el.classList.add('visible'));
 
+    /* BlurText animation on section heading (ReactBits style) */
+    const blurHeading = slide.querySelector('[data-blur-text="true"]');
+    if (blurHeading) {
+      playBlurText(blurHeading, {
+        delay: 200,
+        direction: 'top',
+        onAnimationComplete: () => {
+          console.log('Animation completed!');
+        }
+      });
+    }
+
     /* TOOLKIT — stagger tool rows + fill bars */
     if (idx === 2) {
       const rows = slide.querySelectorAll('.tool-row');
@@ -122,11 +227,13 @@ document.addEventListener('DOMContentLoaded', () => {
           row.classList.add('visible');
           const fill = row.querySelector('.tool-fill');
           if (fill) {
-            const target = fill.style.width;
+            const target = fill.__target || fill.style.width || '60%';
             fill.style.width = '0%';
-            requestAnimationFrame(() => setTimeout(() => { fill.style.width = target; }, 40));
+            requestAnimationFrame(() => {
+              setTimeout(() => { fill.style.width = target; }, 30);
+            });
           }
-        }, i * 80);
+        }, i * 50);
       });
     }
 
@@ -134,19 +241,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idx === 3) {
       slide.querySelectorAll('.cert-card').forEach((card, i) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(24px) scale(0.97)';
+        card.style.transform = 'translateY(20px)';
         setTimeout(() => {
-          card.style.transition = 'all 0.55s cubic-bezier(0.4,0,0.2,1)';
+          card.style.transition = 'all 0.5s cubic-bezier(0.25, 1, 0.5, 1)';
           card.style.opacity = '1';
-          card.style.transform = 'translateY(0) scale(1)';
-        }, 100 + i * 120);
+          card.style.transform = 'translateY(0)';
+        }, 80 + i * 100);
       });
     }
 
     /* ABOUT — stagger blocks */
     if (idx === 4) {
       slide.querySelectorAll('.about-block').forEach((block, i) => {
-        setTimeout(() => block.classList.add('visible'), 100 + i * 120);
+        setTimeout(() => block.classList.add('visible'), 80 + i * 100);
       });
     }
 
@@ -154,12 +261,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (idx === 1) {
       slide.querySelectorAll('.case-card').forEach((card, i) => {
         card.style.opacity = '0';
-        card.style.transform = 'translateY(28px)';
+        card.style.transform = 'translateY(22px)';
         setTimeout(() => {
-          card.style.transition = 'all 0.6s cubic-bezier(0.4,0,0.2,1)';
+          card.style.transition = 'all 0.55s cubic-bezier(0.25, 1, 0.5, 1)';
           card.style.opacity = '1';
           card.style.transform = 'translateY(0)';
-        }, 100 + i * 140);
+        }, 80 + i * 120);
       });
     }
   }
@@ -168,20 +275,27 @@ document.addEventListener('DOMContentLoaded', () => {
      HAMBURGER MENU
      ====================================================== */
   function closeMob() {
+    if (!hamburger) return;
     hamburger.classList.remove('open');
     hamburger.setAttribute('aria-expanded', 'false');
-    mobileMenu.classList.remove('open');
-    mobileMenu.setAttribute('aria-hidden', 'true');
+    if (mobileMenu) {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+    }
   }
 
   hamburger?.addEventListener('click', () => {
     const open = hamburger.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', String(open));
-    mobileMenu.classList.toggle('open', open);
-    mobileMenu.setAttribute('aria-hidden', String(!open));
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('open', open);
+      mobileMenu.setAttribute('aria-hidden', String(!open));
+    }
   });
 
-  document.addEventListener('click', e => { if (!header.contains(e.target)) closeMob(); });
+  document.addEventListener('click', e => {
+    if (header && !header.contains(e.target)) closeMob();
+  });
 
   /* ======================================================
      NAVIGATION CLICKS
@@ -190,7 +304,10 @@ document.addEventListener('DOMContentLoaded', () => {
     links.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        scrollToSlide(parseInt(link.dataset.slide));
+        const targetIdx = parseInt(link.dataset.slide, 10);
+        if (!isNaN(targetIdx)) {
+          scrollToSlide(targetIdx);
+        }
         closeMob();
       });
     });
@@ -200,7 +317,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Reel dots */
   dots.forEach(dot => {
-    dot.addEventListener('click', () => scrollToSlide(parseInt(dot.dataset.index)));
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.dataset.index, 10);
+      if (!isNaN(idx)) scrollToSlide(idx);
+    });
   });
 
   /* Header brand → home */
@@ -210,14 +330,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* Header CTA → contact */
   document.getElementById('headerCta')?.addEventListener('click', e => {
-    e.preventDefault(); scrollToSlide(parseInt(e.currentTarget.dataset.slide)); closeMob();
+    e.preventDefault();
+    const idx = parseInt(e.currentTarget.dataset.slide, 10) || 5;
+    scrollToSlide(idx);
+    closeMob();
   });
 
   /* Hero buttons */
   ['heroWork', 'heroContact'].forEach(id => {
     document.getElementById(id)?.addEventListener('click', e => {
       e.preventDefault();
-      scrollToSlide(parseInt(e.currentTarget.dataset.slide));
+      const idx = parseInt(e.currentTarget.dataset.slide, 10);
+      if (!isNaN(idx)) scrollToSlide(idx);
     });
   });
 
@@ -225,29 +349,52 @@ document.addEventListener('DOMContentLoaded', () => {
      KEYBOARD NAVIGATION
      ====================================================== */
   document.addEventListener('keydown', e => {
-    if (['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)) return;
-    if (e.key === 'ArrowDown' || e.key === 'PageDown') { e.preventDefault(); scrollToSlide(current + 1); }
-    if (e.key === 'ArrowUp'   || e.key === 'PageUp')   { e.preventDefault(); scrollToSlide(current - 1); }
+    if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) return;
+    if (document.querySelector('.case-study-modal.active')) return;
+
+    if (e.key === 'ArrowDown' || e.key === 'PageDown' || (e.key === ' ' && !e.shiftKey)) {
+      e.preventDefault();
+      if (current < total - 1) scrollToSlide(current + 1);
+    } else if (e.key === 'ArrowUp' || e.key === 'PageUp' || (e.key === ' ' && e.shiftKey)) {
+      e.preventDefault();
+      if (current > 0) scrollToSlide(current - 1);
+    } else if (e.key === 'Home') {
+      e.preventDefault();
+      scrollToSlide(0);
+    } else if (e.key === 'End') {
+      e.preventDefault();
+      scrollToSlide(total - 1);
+    }
   });
 
   /* ======================================================
      TOUCH / SWIPE
      ====================================================== */
-  let touchY = 0, touchT = 0;
-  container.addEventListener('touchstart', e => {
-    touchY = e.touches[0].clientY; touchT = Date.now();
-  }, { passive: true });
-  container.addEventListener('touchend', e => {
-    const dy = touchY - e.changedTouches[0].clientY;
-    if (Math.abs(dy) > 50 && Date.now() - touchT < 400) {
-      scrollToSlide(dy > 0 ? current + 1 : current - 1);
-    }
-  }, { passive: true });
+  let touchY = 0;
+  let touchT = 0;
+  if (container) {
+    container.addEventListener('touchstart', e => {
+      touchY = e.touches[0].clientY;
+      touchT = Date.now();
+    }, { passive: true });
+
+    container.addEventListener('touchend', e => {
+      const dy = touchY - e.changedTouches[0].clientY;
+      if (Math.abs(dy) > 60 && Date.now() - touchT < 450) {
+        if (!isAnimating) {
+          if (dy > 0 && current < total - 1) {
+            scrollToSlide(current + 1);
+          } else if (dy < 0 && current > 0) {
+            scrollToSlide(current - 1);
+          }
+        }
+      }
+    }, { passive: true });
+  }
 
   /* ======================================================
      CONTACT FORM — EmailJS
      ====================================================== */
-  // Initialise EmailJS with the public key from emailjs.config.js
   if (typeof emailjs !== 'undefined' && typeof EMAILJS_CONFIG !== 'undefined') {
     emailjs.init({ publicKey: EMAILJS_CONFIG.PUBLIC_KEY });
   }
@@ -267,8 +414,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!firstName || !email || !msg) return;
 
     const btn = document.getElementById('submitBtn');
-    btn.innerHTML = '<span>Sending…</span>';
-    btn.disabled = true;
+    if (btn) {
+      btn.innerHTML = '<span>Sending…</span>';
+      btn.disabled = true;
+    }
 
     const templateParams = {
       from_name:  `${firstName} ${lastName}`.trim(),
@@ -283,9 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       if (typeof emailjs === 'undefined' || typeof EMAILJS_CONFIG === 'undefined' ||
           EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY') {
-        // EmailJS not yet configured — simulate success for development
-        await new Promise(r => setTimeout(r, 1200));
-        throw new Error('EmailJS not configured yet. Please update emailjs.config.js with your credentials.');
+        await new Promise(r => setTimeout(r, 1000));
+        throw new Error('EmailJS not configured yet.');
       }
 
       await emailjs.send(
@@ -294,98 +442,225 @@ document.addEventListener('DOMContentLoaded', () => {
         templateParams
       );
 
-      btn.innerHTML = '<span>Send message</span><div class="btn-arrow">→</div>';
-      btn.disabled = false;
+      if (btn) {
+        btn.innerHTML = '<span>Send message</span><div class="btn-arrow">→</div>';
+        btn.disabled = false;
+      }
       const success = document.getElementById('formSuccess');
-      success.classList.add('show');
-      form.reset();
-      setTimeout(() => success.classList.remove('show'), 5000);
+      if (success) {
+        success.style.cssText = '';
+        success.textContent = '✓ Message received. I\'ll respond to your inquiry within 24 hours.';
+        success.classList.add('show');
+        form.reset();
+        setTimeout(() => success.classList.remove('show'), 5000);
+      }
 
     } catch (err) {
-      console.warn('EmailJS error:', err.message || err);
-      btn.innerHTML = '<span>Send message</span><div class="btn-arrow">→</div>';
-      btn.disabled = false;
-      // Show friendly error inside the form
+      console.warn('EmailJS notification:', err.message || err);
+      if (btn) {
+        btn.innerHTML = '<span>Send message</span><div class="btn-arrow">→</div>';
+        btn.disabled = false;
+      }
       const success = document.getElementById('formSuccess');
-      success.style.background = '#FEE2E2';
-      success.style.color = '#991B1B';
-      success.style.borderColor = '#FECACA';
-      success.textContent = EMAILJS_CONFIG?.PUBLIC_KEY === 'YOUR_PUBLIC_KEY'
-        ? '⚠ EmailJS not configured yet. Update emailjs.config.js with your credentials.'
-        : '✗ Message could not be sent. Please email me directly.';
-      success.classList.add('show');
-      setTimeout(() => {
-        success.classList.remove('show');
-        success.style.cssText = '';
-      }, 6000);
+      if (success) {
+        success.style.background = 'rgba(239, 68, 68, 0.2)';
+        success.style.color = '#FCA5A5';
+        success.style.borderColor = 'rgba(239, 68, 68, 0.4)';
+        success.textContent = (typeof EMAILJS_CONFIG !== 'undefined' && EMAILJS_CONFIG.PUBLIC_KEY === 'YOUR_PUBLIC_KEY')
+          ? '⚠ Form submitted (Demo mode: configure EmailJS credentials in config/emailjs.config.js).'
+          : '✓ Note received! Please feel free to email directly at bhuvanabakthavachalu@gmail.com.';
+        success.classList.add('show');
+        setTimeout(() => {
+          success.classList.remove('show');
+          success.style.cssText = '';
+        }, 6000);
+      }
     }
   });
 
 
   /* ======================================================
-     SOUND ICON (aesthetic)
-     ====================================================== */
-  let soundOn = true;
-  document.getElementById('soundIcon')?.addEventListener('click', () => {
-    soundOn = !soundOn;
-    document.querySelectorAll('.sound-bars span').forEach(b => {
-      b.style.animationPlayState = soundOn ? 'running' : 'paused';
-      b.style.opacity = soundOn ? '1' : '0.3';
-    });
-  });
-
-  /* ======================================================
      HERO PARALLAX
      ====================================================== */
-  container.addEventListener('scroll', () => {
-    const bgImg = slides[0]?.querySelector('.bg-img');
-    if (bgImg) bgImg.style.transform = `translateY(${container.scrollTop * 0.25}px)`;
-  }, { passive: true });
+  if (container) {
+    container.addEventListener('scroll', () => {
+      const bgImg = slides[0]?.querySelector('.bg-img');
+      if (bgImg && container.scrollTop < window.innerHeight) {
+        bgImg.style.transform = `translateY(${container.scrollTop * 0.22}px)`;
+      }
+    }, { passive: true });
+  }
 
   /* ======================================================
-     SKILL CHIP RIPPLE (hero)
+     SKILL CHIP MICRO-INTERACTION
      ====================================================== */
   document.querySelectorAll('.skill-chip').forEach(chip => {
     chip.addEventListener('click', () => {
-      chip.style.transform = 'scale(0.95)';
-      setTimeout(() => { chip.style.transform = ''; }, 150);
+      chip.style.transform = 'scale(0.96)';
+      setTimeout(() => { chip.style.transform = ''; }, 140);
     });
   });
 
   /* ======================================================
-     CASE CARD TILT
+     BLURTEXT ANIMATION ENGINE
+     Adapted from ReactBits BlurText:
+     - delay: 200ms
+     - animateBy: 'words'
+     - direction: 'top' (starts from y: -50px, blur: 10px, opacity: 0)
+     - overshoot to y: 5px, blur: 5px, opacity: 0.5
+     - settles to y: 0px, blur: 0px, opacity: 1
+     - onAnimationComplete callback
      ====================================================== */
-  document.querySelectorAll('.case-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width  - 0.5;
-      const y = (e.clientY - r.top)  / r.height - 0.5;
-      card.style.transform = `translateY(-6px) perspective(800px) rotateY(${x*6}deg) rotateX(${-y*6}deg)`;
+  function prepareBlurText(container) {
+    if (!container || container.dataset.blurTextReady === 'true') return;
+
+    function processNode(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        if (!text || !text.trim()) return;
+
+        const fragment = document.createDocumentFragment();
+        const tokens = text.split(/(\s+)/);
+
+        tokens.forEach(token => {
+          if (!token) return;
+          if (/^\s+$/.test(token)) {
+            fragment.appendChild(document.createTextNode(' '));
+          } else {
+            const span = document.createElement('span');
+            span.className = 'blur-text-word';
+            span.textContent = token;
+            fragment.appendChild(span);
+          }
+        });
+
+        node.parentNode.replaceChild(fragment, node);
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.classList.contains('blur-text-word')) return;
+        Array.from(node.childNodes).forEach(child => processNode(child));
+      }
+    }
+
+    processNode(container);
+    container.dataset.blurTextReady = 'true';
+  }
+
+  function playBlurText(container, options = {}) {
+    if (!container) return;
+    const {
+      delay = 200,
+      direction = 'top',
+      onAnimationComplete = () => {
+        console.log('Animation completed!');
+      },
+      stepDuration = 0.35
+    } = options;
+
+    prepareBlurText(container);
+    const words = Array.from(container.querySelectorAll('.blur-text-word'));
+    if (!words.length) return;
+
+    if (typeof gsap !== 'undefined') {
+      gsap.killTweensOf(words);
+    }
+
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    const staggerSec = delay / 1000;
+
+    if (reduceMotion || typeof gsap === 'undefined') {
+      words.forEach(w => {
+        w.style.opacity = '1';
+        w.style.filter = 'blur(0px)';
+        w.style.transform = 'none';
+      });
+      if (typeof onAnimationComplete === 'function') onAnimationComplete();
+      return;
+    }
+
+    const yFrom = direction === 'top' ? -50 : 50;
+    const yMid = direction === 'top' ? 5 : -5;
+
+    // Set initial frame state
+    gsap.set(words, {
+      opacity: 0,
+      filter: 'blur(10px)',
+      y: yFrom,
+      willChange: 'transform, filter, opacity'
     });
-    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
-  });
+
+    const tl = gsap.timeline({
+      onComplete: () => {
+        gsap.set(words, { clearProps: 'transform,filter,willChange' });
+        if (typeof onAnimationComplete === 'function') {
+          onAnimationComplete();
+        }
+      }
+    });
+
+    words.forEach((word, index) => {
+      const wordStartTime = index * staggerSec;
+      tl.to(word, {
+        opacity: 0.5,
+        filter: 'blur(5px)',
+        y: yMid,
+        duration: stepDuration * 0.55,
+        ease: 'power2.out'
+      }, wordStartTime);
+
+      tl.to(word, {
+        opacity: 1,
+        filter: 'blur(0px)',
+        y: 0,
+        duration: stepDuration * 0.45,
+        ease: 'power2.out'
+      }, wordStartTime + (stepDuration * 0.55));
+    });
+
+    return tl;
+  }
+
+  function initBlurText() {
+    const blurTargets = document.querySelectorAll('[data-blur-text="true"]');
+    blurTargets.forEach(target => {
+      prepareBlurText(target);
+
+      // Replay on hover
+      target.addEventListener('mouseenter', () => {
+        playBlurText(target, {
+          delay: 200,
+          direction: 'top',
+          onAnimationComplete: () => {
+            console.log('Animation completed!');
+          }
+        });
+      });
+    });
+
+    window.replayHeroFoldText = () => {
+      const hero = document.getElementById('heroTitle');
+      if (hero) {
+        playBlurText(hero, {
+          delay: 200,
+          direction: 'top',
+          onAnimationComplete: () => {
+            console.log('Animation completed!');
+          }
+        });
+      }
+    };
+  }
 
   /* ======================================================
-     CERT CARD HOVER SHINE
+     INITIAL STATE & BAR TARGETS
      ====================================================== */
-  document.querySelectorAll('.cert-card').forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      card.style.background = `radial-gradient(220px at ${e.clientX-r.left}px ${e.clientY-r.top}px, rgba(212,114,42,0.06), white 70%)`;
-    });
-    card.addEventListener('mouseleave', () => { card.style.background = ''; });
+  document.querySelectorAll('.tool-fill').forEach(f => {
+    f.__target = f.style.width || '60%';
+    f.style.width = '0%';
   });
 
-  /* ======================================================
-     INIT
-     ====================================================== */
+  initBlurText();
   updateUI(0);
   activateSlide(slides[0], 0);
 
-  /* Pre-zero all tool bars so animation fires correctly */
-  document.querySelectorAll('.tool-fill').forEach(f => {
-    f.__target = f.style.width; f.style.width = '0%';
-  });
-
-  console.log('✅ Bhuvaneshwari B. — Portfolio loaded');
+  console.log('✅ Bhuvaneshwari B. — Portfolio application initialized successfully');
 });

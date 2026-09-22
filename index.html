@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bhuvaneshwari B.Digital Marketing Portfolio</title>
+  <title>Bhuvaneshwari B. — Digital Marketing Portfolio</title>
+  <meta name="theme-color" content="#16211D" />
   <meta name="description"
     content="Performance marketer with expertise in Google Ads, Meta Ads, SEO, and full-funnel campaign strategy. Triple-certified in 2025. Available for roles in Chennai." />
   <meta name="keywords" content="Digital Marketing, Google Ads, Meta Ads, SEO, Performance Marketing, Chennai" />
@@ -12,9 +13,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;1,9..144,500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -418,20 +416,47 @@
       }
 
       .case-close-btn {
-        top: 10px;
-        right: 10px;
+        top: 12px;
+        right: 12px;
+        width: 36px;
+        height: 36px;
+        font-size: 24px;
       }
 
       .case-hero,
-      .case-page {
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
+      .case-page,
+      .case-body {
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+      }
+
+      .case-hero h1,
+      .case-hero-heading {
+        font-size: 1.75rem !important;
+        line-height: 1.25 !important;
+      }
+
+      .case-hero-meta {
+        gap: 1rem !important;
+      }
+
+      table {
+        display: block;
+        width: 100% !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      div[style*="grid-template-columns: repeat(2"],
+      div[style*="grid-template-columns: repeat(3"] {
+        grid-template-columns: 1fr !important;
       }
     }
   </style>
 </head>
 
 <body>
+
 
   <!-- ===== SITE HEADER ===== -->
   <header class="site-header" id="siteHeader">
@@ -450,6 +475,7 @@
       </a>
 
       <nav class="header-nav" id="headerNav" aria-label="Main navigation">
+        <a href="#" class="nav-link active" data-slide="0" id="navHome">Home</a>
         <a href="#" class="nav-link" data-slide="1" id="navWork">Work</a>
         <a href="#" class="nav-link" data-slide="2" id="navToolkit">Toolkit</a>
         <a href="#" class="nav-link" data-slide="3" id="navCerts">Certs</a>
@@ -490,10 +516,6 @@
     <button class="reel-dot" data-index="5" aria-label="Contact"></button>
   </nav>
 
-  <!-- Sound Icon -->
-  <div class="sound-icon" id="soundIcon" title="Ambient Sound">
-    <div class="sound-bars"><span></span><span></span><span></span><span></span><span></span></div>
-  </div>
 
   <!-- ============================= -->
   <!--        REEL CONTAINER         -->
@@ -505,17 +527,15 @@
          ========================================= -->
     <section class="reel-slide slide-hero" id="slide-0" data-index="0">
       <div class="slide-bg">
-        <img src="assets/hero_bg.png" alt="" class="bg-img" aria-hidden="true" />
+        <img src="assets/hero_bg.png" alt="" class="bg-img" aria-hidden="true" fetchpriority="high" decoding="async" />
         <div class="bg-overlay"></div>
       </div>
 
       <div class="hero-layout">
         <!-- Left: Main copy -->
         <div class="hero-copy">
-          <div class="hero-location animate-in">📍 Chennai, Tamil Nadu · Open to Opportunities</div>
-
-          <h1 class="hero-title animate-in delay-1">
-            <span class="ht-line">Strategic campaigns</span>
+          <h1 class="hero-title" id="heroTitle" data-blur-text="true">
+            <span class="ht-line">strategic campaigns</span>
             <span class="ht-line accent">that drive</span>
             <span class="ht-line">measurable</span>
             <span class="ht-line italic-serif">growth.</span>
@@ -611,8 +631,7 @@
       </div>
       <div class="work-content">
         <div class="section-header">
-          <div class="section-tag">✦ Selected Case Studies</div>
-          <h2 class="section-title">Strategic <em>Campaign Work</em></h2>
+          <h2 class="section-title" id="workTitle" data-blur-text="true">Strategic <em>Campaign Work</em></h2>
           <p class="section-subtitle">Two comprehensive case studies demonstrating full-funnel strategy, audience
             segmentation, creative optimization, and performance measurement across healthcare and wellness sectors.</p>
         </div>
@@ -641,7 +660,9 @@
               </div>
             </div>
             <div class="case-body">
-              <div class="case-icon dental-icon" style="background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 22px;">A</div>
+              <div class="case-icon dental-icon"
+                style="background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 22px;">
+                A</div>
               <div class="case-text">
                 <h3>Apollo Dental</h3>
                 <p class="case-subtitle-txt">Healthcare Advertising · Always-On Multi-City Campaign</p>
@@ -724,8 +745,8 @@
       </div>
       <div class="toolkit-content">
         <div class="section-header">
-          <div class="section-tag light-tag">✦ My Toolkit</div>
-          <h2 class="section-title light-title">Tools &amp; <em>Proficiency</em></h2>
+          <h2 class="section-title light-title" id="toolkitTitle" data-blur-text="true">Tools &amp; <em>Proficiency</em>
+          </h2>
           <p class="section-subtitle light-sub">A transparent view of every tool I work with and my honest proficiency
             level.</p>
         </div>
@@ -882,13 +903,13 @@
          ========================================= -->
     <section class="reel-slide slide-certs" id="slide-3" data-index="3">
       <div class="slide-bg">
-        <img src="assets/hero_bg.png" alt="" class="bg-img low-opacity" aria-hidden="true" />
+        <img src="assets/hero_bg.png" alt="" class="bg-img low-opacity" aria-hidden="true" loading="lazy"
+          decoding="async" />
         <div class="bg-overlay certs-overlay"></div>
       </div>
       <div class="certs-content">
         <div class="section-header center-header">
-          <div class="section-tag">✦ Credentials</div>
-          <h2 class="section-title">My <em>Certifications</em></h2>
+          <h2 class="section-title" id="certsTitle" data-blur-text="true">My <em>Certifications</em></h2>
           <p class="section-subtitle">Three industry-recognised certifications completed in 2025 — covering the full
             digital marketing stack.</p>
         </div>
@@ -966,8 +987,8 @@
       </div>
       <div class="about-content">
         <div class="about-left">
-          <div class="section-tag">✦ Professional Profile</div>
-          <h2 class="about-heading">Analytical mindset<br /><em>with strategic</em><br />execution.</h2>
+          <h2 class="about-heading" id="aboutHeading" data-blur-text="true">Analytical mindset<br /><em>with
+              strategic</em><br />execution.</h2>
           <p class="about-intro">With <strong>3+ years in financial analytics</strong> and a transition into performance
             marketing, I bring data discipline and measurable results to every campaign. My accounting background
             ensures budget optimization, transparent ROI reporting, and accountability—principles I apply to all digital
@@ -1053,8 +1074,7 @@
       <div class="contact-content">
 
         <div class="contact-left">
-          <div class="section-tag light-tag">✦ Let's Connect</div>
-          <h2 class="contact-title">
+          <h2 class="contact-title" id="contactTitle" data-blur-text="true">
             <span>Ready to discuss</span>
             <em>your next</em>
             <span>marketing challenge.</span>
@@ -1092,15 +1112,7 @@
               </div>
             </a>
           </div>
-
-          <div class="avail-box">
-            <div class="avail-dot"></div>
-            <p><strong>Current Status:</strong> Seeking full-time opportunities in Performance Marketing, Paid Media
-              Management, and Digital Campaign Strategy. Available for immediate transition. Open to Chennai-based and
-              hybrid arrangements.</p>
-          </div>
         </div>
-
         <div class="contact-right">
           <form class="contact-form" id="contactForm" novalidate>
             <h3>Send a Message</h3>
@@ -1208,7 +1220,8 @@
       <div class="case-body">
 
         <div class="case-section">
-          <div style="background: #DCEAE3; border-left: 3px solid #1F5C4A; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #3E4A44; margin-bottom: 1rem;">
+          <div
+            style="background: #DCEAE3; border-left: 3px solid #1F5C4A; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #3E4A44; margin-bottom: 1rem;">
             <strong style="color: #1F5C4A;">Note:</strong> Apollo Dental (apollodental.in) is a real, operating dental
             chain — part of Apollo Hospitals Group, with 220+ locations across 45 Indian cities. This is a
             self-directed educational project built around their real, public-facing business and website. It is not
@@ -1281,9 +1294,21 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;"><strong>Clove Dental</strong></td><td style="padding: 10px 12px;">Affordable pricing, large presence, good digital campaigns</td><td style="padding: 10px 0 10px 12px;">Limited focus on premium services</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;"><strong>32 Smiles Dental Care</strong></td><td style="padding: 10px 12px;">Strong emphasis on aesthetic procedures</td><td style="padding: 10px 0 10px 12px;">Comparatively niche, limited geographic reach</td></tr>
-              <tr><td style="padding: 10px 12px 10px 0;"><strong>Local clinics</strong></td><td style="padding: 10px 12px;">Personalized service and convenience</td><td style="padding: 10px 0 10px 12px;">Lack of brand recognition, limited ad capability</td></tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;"><strong>Clove Dental</strong></td>
+                <td style="padding: 10px 12px;">Affordable pricing, large presence, good digital campaigns</td>
+                <td style="padding: 10px 0 10px 12px;">Limited focus on premium services</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;"><strong>32 Smiles Dental Care</strong></td>
+                <td style="padding: 10px 12px;">Strong emphasis on aesthetic procedures</td>
+                <td style="padding: 10px 0 10px 12px;">Comparatively niche, limited geographic reach</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px 10px 0;"><strong>Local clinics</strong></td>
+                <td style="padding: 10px 12px;">Personalized service and convenience</td>
+                <td style="padding: 10px 0 10px 12px;">Lack of brand recognition, limited ad capability</td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -1304,7 +1329,8 @@
                 the highest-value segment.</p>
             </div>
           </div>
-          <div style="background: #DCEAE3; border-left: 3px solid #1F5C4A; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #3E4A44;">
+          <div
+            style="background: #DCEAE3; border-left: 3px solid #1F5C4A; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #3E4A44;">
             <strong style="color: #1F5C4A;">Compliance note:</strong> Meta's advertising policy prohibits targeting or
             messaging that asserts or implies a health condition or need — including inferred ones. Targeting here is
             demographic and interest-based only, never on inferred health status.
@@ -1350,11 +1376,31 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Local visibility</td><td style="padding: 10px 12px;">Google Business Profile — organic</td><td style="padding: 10px 0 10px 12px;">Free, high-intent Maps map-pack visibility</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Reach</td><td style="padding: 10px 12px;">Google Display + YouTube — Awareness, CPM</td><td style="padding: 10px 0 10px 12px;">Cheap reach before someone actively searches</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Intent capture</td><td style="padding: 10px 12px;">Google Search — Maximize Conversions</td><td style="padding: 10px 0 10px 12px;">Highest-intent traffic</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Cold social</td><td style="padding: 10px 12px;">Meta — Reach objective</td><td style="padding: 10px 0 10px 12px;">Build pixel data and familiarity</td></tr>
-              <tr><td style="padding: 10px 12px 10px 0;">Warm retarget</td><td style="padding: 10px 12px;">Meta — Leads objective, native form</td><td style="padding: 10px 0 10px 12px;">Objective correctly matched to mechanism</td></tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Local visibility</td>
+                <td style="padding: 10px 12px;">Google Business Profile — organic</td>
+                <td style="padding: 10px 0 10px 12px;">Free, high-intent Maps map-pack visibility</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Reach</td>
+                <td style="padding: 10px 12px;">Google Display + YouTube — Awareness, CPM</td>
+                <td style="padding: 10px 0 10px 12px;">Cheap reach before someone actively searches</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Intent capture</td>
+                <td style="padding: 10px 12px;">Google Search — Maximize Conversions</td>
+                <td style="padding: 10px 0 10px 12px;">Highest-intent traffic</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Cold social</td>
+                <td style="padding: 10px 12px;">Meta — Reach objective</td>
+                <td style="padding: 10px 0 10px 12px;">Build pixel data and familiarity</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px 10px 0;">Warm retarget</td>
+                <td style="padding: 10px 12px;">Meta — Leads objective, native form</td>
+                <td style="padding: 10px 0 10px 12px;">Objective correctly matched to mechanism</td>
+              </tr>
             </tbody>
           </table>
           <p style="font-size: 14px; color: #7A8580;">Google's Local Services Ads is deliberately excluded — not
@@ -1377,16 +1423,66 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Page Titles: Missing</td><td style="padding: 8px 12px;">Issue</td><td style="padding: 8px 12px; color: #D85A30;">High</td><td style="padding: 8px 0 8px 12px;">5</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Canonicals: Contains Fragment URL</td><td style="padding: 8px 12px;">Issue</td><td style="padding: 8px 12px; color: #D85A30;">High</td><td style="padding: 8px 0 8px 12px;">1</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">H1: Missing</td><td style="padding: 8px 12px;">Issue</td><td style="padding: 8px 12px; color: #BA7517;">Medium</td><td style="padding: 8px 0 8px 12px;">49</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">H1: Multiple</td><td style="padding: 8px 12px;">Warning</td><td style="padding: 8px 12px; color: #BA7517;">Medium</td><td style="padding: 8px 0 8px 12px;">120</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Page Titles: Duplicate</td><td style="padding: 8px 12px;">Opportunity</td><td style="padding: 8px 12px; color: #BA7517;">Medium</td><td style="padding: 8px 0 8px 12px;">6</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Canonicals: Missing</td><td style="padding: 8px 12px;">Warning</td><td style="padding: 8px 12px; color: #BA7517;">Medium</td><td style="padding: 8px 0 8px 12px;">1</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Content: Low Content Pages</td><td style="padding: 8px 12px;">Opportunity</td><td style="padding: 8px 12px; color: #BA7517;">Medium</td><td style="padding: 8px 0 8px 12px;">24</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">Meta Description: Missing</td><td style="padding: 8px 12px;">Opportunity</td><td style="padding: 8px 12px;">Low</td><td style="padding: 8px 0 8px 12px;">8</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 8px 12px 8px 0;">URL: Uppercase</td><td style="padding: 8px 12px;">Warning</td><td style="padding: 8px 12px;">Low</td><td style="padding: 8px 0 8px 12px;">15</td></tr>
-              <tr><td style="padding: 8px 12px 8px 0;">Images: Missing Alt Attribute</td><td style="padding: 8px 12px;">Issue</td><td style="padding: 8px 12px;">Low</td><td style="padding: 8px 0 8px 12px;">4</td></tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Page Titles: Missing</td>
+                <td style="padding: 8px 12px;">Issue</td>
+                <td style="padding: 8px 12px; color: #D85A30;">High</td>
+                <td style="padding: 8px 0 8px 12px;">5</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Canonicals: Contains Fragment URL</td>
+                <td style="padding: 8px 12px;">Issue</td>
+                <td style="padding: 8px 12px; color: #D85A30;">High</td>
+                <td style="padding: 8px 0 8px 12px;">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">H1: Missing</td>
+                <td style="padding: 8px 12px;">Issue</td>
+                <td style="padding: 8px 12px; color: #BA7517;">Medium</td>
+                <td style="padding: 8px 0 8px 12px;">49</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">H1: Multiple</td>
+                <td style="padding: 8px 12px;">Warning</td>
+                <td style="padding: 8px 12px; color: #BA7517;">Medium</td>
+                <td style="padding: 8px 0 8px 12px;">120</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Page Titles: Duplicate</td>
+                <td style="padding: 8px 12px;">Opportunity</td>
+                <td style="padding: 8px 12px; color: #BA7517;">Medium</td>
+                <td style="padding: 8px 0 8px 12px;">6</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Canonicals: Missing</td>
+                <td style="padding: 8px 12px;">Warning</td>
+                <td style="padding: 8px 12px; color: #BA7517;">Medium</td>
+                <td style="padding: 8px 0 8px 12px;">1</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Content: Low Content Pages</td>
+                <td style="padding: 8px 12px;">Opportunity</td>
+                <td style="padding: 8px 12px; color: #BA7517;">Medium</td>
+                <td style="padding: 8px 0 8px 12px;">24</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">Meta Description: Missing</td>
+                <td style="padding: 8px 12px;">Opportunity</td>
+                <td style="padding: 8px 12px;">Low</td>
+                <td style="padding: 8px 0 8px 12px;">8</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 8px 12px 8px 0;">URL: Uppercase</td>
+                <td style="padding: 8px 12px;">Warning</td>
+                <td style="padding: 8px 12px;">Low</td>
+                <td style="padding: 8px 0 8px 12px;">15</td>
+              </tr>
+              <tr>
+                <td style="padding: 8px 12px 8px 0;">Images: Missing Alt Attribute</td>
+                <td style="padding: 8px 12px;">Issue</td>
+                <td style="padding: 8px 12px;">Low</td>
+                <td style="padding: 8px 0 8px 12px;">4</td>
+              </tr>
             </tbody>
           </table>
           <p><strong>What I'd fix first:</strong> the 5 missing page titles and the 1 fragment-URL canonical — both
@@ -1399,22 +1495,31 @@
           <div class="case-section-label">07 — Keyword Strategy & Ad Copy</div>
           <h2>Evergreen — not tied to any seasonal offer</h2>
           <ul style="color: #3E4A44; margin: 0 0 1.25rem 1.25rem; max-width: 640px;">
-            <li><strong>Branded:</strong> "Apollo Dental Clinic," "Apollo Dental appointment," "Apollo Dental [city]"</li>
-            <li><strong>Generic:</strong> "dentist near me," "dental clinic near me," "teeth cleaning cost," "root canal treatment cost"</li>
-            <li><strong>Long-tail:</strong> "best dentist for teeth whitening in [city]," "affordable dental checkup near me"</li>
-            <li><strong>Negative keywords:</strong> "dental college," "dentist jobs," "dental assistant salary," "free dental camp"</li>
+            <li><strong>Branded:</strong> "Apollo Dental Clinic," "Apollo Dental appointment," "Apollo Dental [city]"
+            </li>
+            <li><strong>Generic:</strong> "dentist near me," "dental clinic near me," "teeth cleaning cost," "root canal
+              treatment cost"</li>
+            <li><strong>Long-tail:</strong> "best dentist for teeth whitening in [city]," "affordable dental checkup
+              near me"</li>
+            <li><strong>Negative keywords:</strong> "dental college," "dentist jobs," "dental assistant salary," "free
+              dental camp"</li>
           </ul>
           <div class="case-creative-box" style="margin-bottom: 1.5rem;">
-            <p style="margin-bottom: 0.5rem;"><strong>Google Search:</strong> Trusted Dental Care | Book Today — MDS-Certified Dentists | 5 Cities</p>
-            <p style="margin-bottom: 0;">Painless treatments, transparent pricing, appointments across 5 metros. Book your free consultation now.</p>
-            <p style="margin-top: 0.75rem; font-size: 13px; color: #7A8580;">Ad extensions: Call, Location, Sitelinks (Book Appointment / Our Services / Locations / Patient Reviews)</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Google Search:</strong> Trusted Dental Care | Book Today —
+              MDS-Certified Dentists | 5 Cities</p>
+            <p style="margin-bottom: 0;">Painless treatments, transparent pricing, appointments across 5 metros. Book
+              your free consultation now.</p>
+            <p style="margin-top: 0.75rem; font-size: 13px; color: #7A8580;">Ad extensions: Call, Location, Sitelinks
+              (Book Appointment / Our Services / Locations / Patient Reviews)</p>
           </div>
           <div class="case-creative-box" style="margin-bottom: 1.5rem;">
-            <p style="margin-bottom: 0.5rem;"><strong>Meta — Cold Reach (Awareness):</strong> Your smile deserves expert care. MDS-certified dentists across 5 Indian cities.</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Meta — Cold Reach (Awareness):</strong> Your smile deserves expert
+              care. MDS-certified dentists across 5 Indian cities.</p>
             <p style="margin-bottom: 0;">CTA: Learn More</p>
           </div>
           <div class="case-creative-box" style="margin-bottom: 0;">
-            <p style="margin-bottom: 0.5rem;"><strong>Meta — Warm Retarget (Leads, native form):</strong> Still thinking about that dental visit? Book a free consultation — quick, easy, no waiting rooms.</p>
+            <p style="margin-bottom: 0.5rem;"><strong>Meta — Warm Retarget (Leads, native form):</strong> Still thinking
+              about that dental visit? Book a free consultation — quick, easy, no waiting rooms.</p>
             <p style="margin-bottom: 0;">CTA: Book Now (native Lead Form, pre-filled)</p>
           </div>
         </div>
@@ -1426,51 +1531,77 @@
           <p>Generic initials instead of a scraped logo, language checked against the compliance notes below.</p>
           <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 1.5rem 0;">
             <div style="flex: 1; min-width: 260px;">
-              <div style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; padding: 1.25rem 1.5rem; background: #fff; font-family: Arial, sans-serif;">
+              <div
+                style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; padding: 1.25rem 1.5rem; background: #fff; font-family: Arial, sans-serif;">
                 <div style="font-size: 12px; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">
-                  <span style="background: #e8f0fe; color: #1a73e8; font-weight: 700; font-size: 11px; padding: 1px 5px; border-radius: 3px;">Ad</span>
+                  <span
+                    style="background: #e8f0fe; color: #1a73e8; font-weight: 700; font-size: 11px; padding: 1px 5px; border-radius: 3px;">Ad</span>
                   <span style="color: #202124;">apollodental.in</span>
                 </div>
-                <div style="font-size: 16px; color: #1a0dab; line-height: 1.3; margin-bottom: 4px;">Trusted Dental Care | Book Today</div>
-                <div style="font-size: 13px; color: #4d5156; line-height: 1.5;">Painless treatments, transparent pricing, appointments across 5 metros.</div>
+                <div style="font-size: 16px; color: #1a0dab; line-height: 1.3; margin-bottom: 4px;">Trusted Dental Care
+                  | Book Today</div>
+                <div style="font-size: 13px; color: #4d5156; line-height: 1.5;">Painless treatments, transparent
+                  pricing, appointments across 5 metros.</div>
               </div>
               <p style="font-size: 13px; color: #7A8580; margin-top: 0.5rem;">Google Search · intent-capture</p>
             </div>
             <div style="flex: 1; min-width: 260px;">
-              <div style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; overflow: hidden; background: #fff; font-family: Arial, sans-serif;">
+              <div
+                style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; overflow: hidden; background: #fff; font-family: Arial, sans-serif;">
                 <div style="display: flex; align-items: center; gap: 8px; padding: 12px 14px;">
-                  <div style="width: 32px; height: 32px; border-radius: 50%; background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 14px;">A</div>
-                  <div><div style="font-size: 13px; font-weight: 600; color: #050505;">Apollo Dental</div><div style="font-size: 11px; color: #65676b;">Sponsored</div></div>
+                  <div
+                    style="width: 32px; height: 32px; border-radius: 50%; background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 14px;">
+                    A</div>
+                  <div>
+                    <div style="font-size: 13px; font-weight: 600; color: #050505;">Apollo Dental</div>
+                    <div style="font-size: 11px; color: #65676b;">Sponsored</div>
+                  </div>
                 </div>
-                <div style="padding: 0 14px 10px; font-size: 13px; color: #050505;">Your smile deserves expert care. MDS-certified dentists across 5 Indian cities.</div>
-                <div style="background: linear-gradient(135deg,#eaf6f1,#d9ede4); padding: 2.25rem 1.5rem; text-align: center;">
-                  <div style="font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; color: #1F5C4A;">Let Your Smile Do the Talking</div>
+                <div style="padding: 0 14px 10px; font-size: 13px; color: #050505;">Your smile deserves expert care.
+                  MDS-certified dentists across 5 Indian cities.</div>
+                <div
+                  style="background: linear-gradient(135deg,#eaf6f1,#d9ede4); padding: 2.25rem 1.5rem; text-align: center;">
+                  <div style="font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; color: #1F5C4A;">Let Your
+                    Smile Do the Talking</div>
                 </div>
-                <div style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid rgba(26,23,20,0.1);">
+                <div
+                  style="display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border-top: 1px solid rgba(26,23,20,0.1);">
                   <div style="font-size: 12px; color: #65676b;">apollodental.in</div>
-                  <div style="background: #e7f3ff; color: #1877f2; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">Learn More</div>
+                  <div
+                    style="background: #e7f3ff; color: #1877f2; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 6px;">
+                    Learn More</div>
                 </div>
               </div>
               <p style="font-size: 13px; color: #7A8580; margin-top: 0.5rem;">Facebook feed · cold reach</p>
             </div>
             <div style="flex: 1; min-width: 260px;">
-              <div style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; overflow: hidden; background: #fff; font-family: Arial, sans-serif;">
+              <div
+                style="border: 1px solid rgba(26,23,20,0.1); border-radius: 12px; overflow: hidden; background: #fff; font-family: Arial, sans-serif;">
                 <div style="display: flex; align-items: center; gap: 8px; padding: 10px 12px;">
-                  <div style="width: 28px; height: 28px; border-radius: 50%; background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 12px;">A</div>
-                  <div style="font-size: 13px; font-weight: 600; color: #050505;">apollodental <span style="font-weight: 400; color: #8e8e8e;">· Sponsored</span></div>
+                  <div
+                    style="width: 28px; height: 28px; border-radius: 50%; background: #DCEAE3; display: flex; align-items: center; justify-content: center; color: #1F5C4A; font-weight: 700; font-size: 12px;">
+                    A</div>
+                  <div style="font-size: 13px; font-weight: 600; color: #050505;">apollodental <span
+                      style="font-weight: 400; color: #8e8e8e;">· Sponsored</span></div>
                 </div>
-                <div style="background: linear-gradient(160deg,#0f6e56,#1d9e75); padding: 1.75rem 1.25rem; text-align: center; color: #fff;">
-                  <div style="font-family: 'Fraunces', Georgia, serif; font-size: 1.25rem; margin-bottom: 8px;">Still thinking about it?</div>
-                  <div style="font-size: 12px; opacity: 0.9;">Book a free consultation — quick, easy, no waiting rooms.</div>
+                <div
+                  style="background: linear-gradient(160deg,#0f6e56,#1d9e75); padding: 1.75rem 1.25rem; text-align: center; color: #fff;">
+                  <div style="font-family: 'Fraunces', Georgia, serif; font-size: 1.25rem; margin-bottom: 8px;">Still
+                    thinking about it?</div>
+                  <div style="font-size: 12px; opacity: 0.9;">Book a free consultation — quick, easy, no waiting rooms.
+                  </div>
                 </div>
                 <div style="padding: 10px 12px;">
-                  <span style="display: inline-block; background: #efefef; color: #262626; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px;">Book Now</span>
+                  <span
+                    style="display: inline-block; background: #efefef; color: #262626; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 6px;">Book
+                    Now</span>
                 </div>
               </div>
               <p style="font-size: 13px; color: #7A8580; margin-top: 0.5rem;">Instagram feed · warm retarget</p>
             </div>
           </div>
-          <p style="font-size: 13px; color: #7A8580; font-style: italic;">Educational project — not an actual Apollo Dental campaign.</p>
+          <p style="font-size: 13px; color: #7A8580; font-style: italic;">Educational project — not an actual Apollo
+            Dental campaign.</p>
         </div>
 
         <!-- Creative Direction -->
@@ -1504,13 +1635,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Google Search</td><td style="padding: 10px 12px;">₹1,80,000</td><td style="padding: 10px 12px;">₹25–40</td><td style="padding: 10px 12px;">₹250–450</td><td style="padding: 10px 0 10px 12px;">400–720</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Facebook</td><td style="padding: 10px 12px;">₹1,20,000</td><td style="padding: 10px 12px;">₹8–15</td><td style="padding: 10px 12px;">₹150–300</td><td style="padding: 10px 0 10px 12px;">400–800</td></tr>
-              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);"><td style="padding: 10px 12px 10px 0;">Instagram</td><td style="padding: 10px 12px;">₹1,00,000</td><td style="padding: 10px 12px;">₹10–18</td><td style="padding: 10px 12px;">₹150–280</td><td style="padding: 10px 0 10px 12px;">360–670</td></tr>
-              <tr><td style="padding: 10px 12px 10px 0;"><strong>Total</strong></td><td style="padding: 10px 12px;"><strong>₹4,00,000</strong></td><td style="padding: 10px 12px;">—</td><td style="padding: 10px 12px;"><strong>~₹190–260</strong></td><td style="padding: 10px 0 10px 12px;"><strong>~1,150–2,190</strong></td></tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Google Search</td>
+                <td style="padding: 10px 12px;">₹1,80,000</td>
+                <td style="padding: 10px 12px;">₹25–40</td>
+                <td style="padding: 10px 12px;">₹250–450</td>
+                <td style="padding: 10px 0 10px 12px;">400–720</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Facebook</td>
+                <td style="padding: 10px 12px;">₹1,20,000</td>
+                <td style="padding: 10px 12px;">₹8–15</td>
+                <td style="padding: 10px 12px;">₹150–300</td>
+                <td style="padding: 10px 0 10px 12px;">400–800</td>
+              </tr>
+              <tr style="border-bottom: 1px solid rgba(26,23,20,0.1);">
+                <td style="padding: 10px 12px 10px 0;">Instagram</td>
+                <td style="padding: 10px 12px;">₹1,00,000</td>
+                <td style="padding: 10px 12px;">₹10–18</td>
+                <td style="padding: 10px 12px;">₹150–280</td>
+                <td style="padding: 10px 0 10px 12px;">360–670</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px 12px 10px 0;"><strong>Total</strong></td>
+                <td style="padding: 10px 12px;"><strong>₹4,00,000</strong></td>
+                <td style="padding: 10px 12px;">—</td>
+                <td style="padding: 10px 12px;"><strong>~₹190–260</strong></td>
+                <td style="padding: 10px 0 10px 12px;"><strong>~1,150–2,190</strong></td>
+              </tr>
             </tbody>
           </table>
-          <p style="font-size: 14px; color: #7A8580;">CPC ranges from typical Indian dental/healthcare keyword auctions and Meta interest-targeting patterns — industry estimates, not guarantees. Tracked weekly from week 1.</p>
+          <p style="font-size: 14px; color: #7A8580;">CPC ranges from typical Indian dental/healthcare keyword auctions
+            and Meta interest-targeting patterns — industry estimates, not guarantees. Tracked weekly from week 1.</p>
         </div>
 
         <!-- Results -->
@@ -1519,7 +1675,8 @@
           <h2>What I'd track, and what I'd do differently</h2>
           <p><strong>Weekly:</strong> CPL by channel/city, lead-to-booked-appointment rate, Search Impression Share.
             <strong>Call tracking:</strong> both the Meta retarget path and Search's call extension drive phone
-            calls — a unique tracking number per channel/city is needed before launch.</p>
+            calls — a unique tracking number per channel/city is needed before launch.
+          </p>
           <div class="case-learning-item">
             <div class="case-learning-num">1</div>
             <p><strong>Splitting spend across platforms diversifies risk.</strong> No single platform's cost swings
@@ -1568,24 +1725,38 @@
     <button class="case-close-btn" onclick="closeCaseStudy(2)">&times;</button>
     <div class="case-study-content">
       <div class="case-hero">
-        <div class="case-hero-tag" style="background: #E1F5EE; color: #0F6E56;">Case Study · Fitness &amp; Wellness · Local Brand · Chennai</div>
-        <h1 class="case-hero-heading" style="margin: 0 0 1.25rem 0;">Building a loyal yoga community for Team Fitness through <em style="color: #0F6E56;">hyperlocal digital marketing</em></h1>
-        <p class="case-hero-sub">A full-funnel digital campaign designed to grow trial class bookings, build brand awareness, and create a returning member community for Team Fitness with Yoga — a boutique yoga studio in Porur, Chennai.</p>
+        <div class="case-hero-tag" style="background: #E1F5EE; color: #0F6E56;">Case Study · Fitness &amp; Wellness ·
+          Local Brand · Chennai</div>
+        <h1 class="case-hero-heading" style="margin: 0 0 1.25rem 0;">Building a loyal yoga community for Team Fitness
+          through <em style="color: #0F6E56;">hyperlocal digital marketing</em></h1>
+        <p class="case-hero-sub">A full-funnel digital campaign designed to grow trial class bookings, build brand
+          awareness, and create a returning member community for Team Fitness with Yoga — a boutique yoga studio in
+          Porur, Chennai.</p>
         <div class="case-hero-meta">
-          <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Campaign Strategist</span></div>
-          <div class="case-meta-item"><span class="case-meta-label">Brand</span><span class="case-meta-value">Team Fitness with Yoga</span></div>
-          <div class="case-meta-item"><span class="case-meta-label">Location</span><span class="case-meta-value">Porur, Chennai</span></div>
-          <div class="case-meta-item"><span class="case-meta-label">Sector</span><span class="case-meta-value">Fitness · Wellness</span></div>
-          <div class="case-meta-item"><span class="case-meta-label">Platforms</span><span class="case-meta-value">Meta · Google · WhatsApp</span></div>
-          <div class="case-meta-item"><span class="case-meta-label">Year</span><span class="case-meta-value">2025</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Role</span><span class="case-meta-value">Campaign
+              Strategist</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Brand</span><span class="case-meta-value">Team
+              Fitness with Yoga</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Location</span><span class="case-meta-value">Porur,
+              Chennai</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Sector</span><span class="case-meta-value">Fitness ·
+              Wellness</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Platforms</span><span class="case-meta-value">Meta ·
+              Google · WhatsApp</span></div>
+          <div class="case-meta-item"><span class="case-meta-label">Year</span><span class="case-meta-value">2025</span>
+          </div>
         </div>
       </div>
 
       <div class="case-body">
 
         <div class="case-section">
-          <div style="background: #E1F5EE; border-left: 3px solid #0F6E56; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #4A4540;">
-            <strong style="color: #0F6E56;">Note:</strong> This is a self-initiated strategic case study built as part of my freelance outreach to a real local business — not a paid client engagement. Business details (reviews, Instagram content, service specialization) are drawn from the studio's actual public presence; campaign figures below are projections built from public benchmarks, not delivered results.
+          <div
+            style="background: #E1F5EE; border-left: 3px solid #0F6E56; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #4A4540;">
+            <strong style="color: #0F6E56;">Note:</strong> This is a self-initiated strategic case study built as part
+            of my freelance outreach to a real local business — not a paid client engagement. Business details (reviews,
+            Instagram content, service specialization) are drawn from the studio's actual public presence; campaign
+            figures below are projections built from public benchmarks, not delivered results.
           </div>
         </div>
 
@@ -1593,32 +1764,63 @@
         <div class="case-section" id="brief">
           <div class="case-section-label">01 · The Brief</div>
           <h2>The challenge</h2>
-          <p>Team Fitness with Yoga is a boutique, women's-health-focused yoga studio in Porur, Chennai — specializing in weight loss, hormone balancing, postpartum fitness, PCOS/PCOD, and fertility support. It's a real business with 124 Google reviews and a genuinely active Instagram, running recurring 30/60/100-day weight-loss challenges with strong organic testimonials and a WhatsApp-first coaching model.</p>
-          <p>That's exactly what makes this an interesting strategic problem: the studio has real organic traction but no systematized paid acquisition layer. The brief was to build a structured digital funnel around what's already working — not start from zero, but professionalize and scale an already-successful organic playbook.</p>
+          <p>Team Fitness with Yoga is a boutique, women's-health-focused yoga studio in Porur, Chennai — specializing
+            in weight loss, hormone balancing, postpartum fitness, PCOS/PCOD, and fertility support. It's a real
+            business with 124 Google reviews and a genuinely active Instagram, running recurring 30/60/100-day
+            weight-loss challenges with strong organic testimonials and a WhatsApp-first coaching model.</p>
+          <p>That's exactly what makes this an interesting strategic problem: the studio has real organic traction but
+            no systematized paid acquisition layer. The brief was to build a structured digital funnel around what's
+            already working — not start from zero, but professionalize and scale an already-successful organic playbook.
+          </p>
 
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin: 1.75rem 0;">
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
-              <div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Challenge 01</div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Challenge 01</div>
               <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Strong organics, no paid funnel</h3>
-              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">124 Google reviews and an active Instagram full of transformation testimonials — but growth depends entirely on organic reach, with no paid acquisition layer to scale it deliberately.</p>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">124 Google reviews and an active Instagram full
+                of transformation testimonials — but growth depends entirely on organic reach, with no paid acquisition
+                layer to scale it deliberately.</p>
             </div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
-              <div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Challenge 02</div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Challenge 02</div>
               <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Hyperlocal reach needed</h3>
-              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">Budget was limited — every rupee had to reach people within 5 km who could realistically attend. No wasted national impressions.</p>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">Budget was limited — every rupee had to reach
+                people within 5 km who could realistically attend. No wasted national impressions.</p>
             </div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
-              <div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Challenge 03</div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem; box-shadow: 0 1px 3px rgba(22,33,29,0.06);">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Challenge 03</div>
               <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">High churn in fitness</h3>
-              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">The fitness industry sees 50%+ dropout in the first 3 months. The campaign needed a retention layer, not just acquisition.</p>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">The fitness industry sees 50%+ dropout in the
+                first 3 months. The campaign needed a retention layer, not just acquisition.</p>
             </div>
           </div>
 
           <div class="case-kpi-grid">
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">30%</div><div class="case-kpi-desc">Projected trial class booking increase via local Meta ads</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">40%</div><div class="case-kpi-desc">Forecasted Google Maps visibility improvement via GMB optimisation</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">4</div><div class="case-kpi-desc">Funnel stages designed including post-conversion retention</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">3</div><div class="case-kpi-desc">Distinct audience personas targeted</div></div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">30%</div>
+              <div class="case-kpi-desc">Projected trial class booking increase via local Meta ads</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">40%</div>
+              <div class="case-kpi-desc">Forecasted Google Maps visibility improvement via GMB optimisation</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">4</div>
+              <div class="case-kpi-desc">Funnel stages designed including post-conversion retention</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">3</div>
+              <div class="case-kpi-desc">Distinct audience personas targeted</div>
+            </div>
           </div>
         </div>
 
@@ -1626,29 +1828,53 @@
         <div class="case-section" id="strategy">
           <div class="case-section-label">02 · The Strategy</div>
           <h2>4-stage hyperlocal funnel</h2>
-          <p>Unlike a national brand campaign, this required a hyperlocal strategy — combining paid ads, organic content, Google My Business, and WhatsApp community building to win within a 5 km radius of Porur.</p>
+          <p>Unlike a national brand campaign, this required a hyperlocal strategy — combining paid ads, organic
+            content, Google My Business, and WhatsApp community building to win within a 5 km radius of Porur.</p>
 
           <div class="case-funnel">
             <div class="case-funnel-stage">
               <div class="case-stage-badge" style="background: #E1F5EE; color: #085041;">Discover</div>
-              <div class="case-stage-content"><h3>Systematize what's already working</h3><p>Google Business Profile is live with 124 reviews but underused for weekly posts/photos. Meta ads with 5 km radius targeting in Porur, Ramapuram, and Valasaravakkam — layered on top of, not replacing, the organic reach already driving bookings. Targeting: women 24–45 interested in weight loss, hormone health, and postpartum fitness.</p></div>
+              <div class="case-stage-content">
+                <h3>Systematize what's already working</h3>
+                <p>Google Business Profile is live with 124 reviews but underused for weekly posts/photos. Meta ads with
+                  5 km radius targeting in Porur, Ramapuram, and Valasaravakkam — layered on top of, not replacing, the
+                  organic reach already driving bookings. Targeting: women 24–45 interested in weight loss, hormone
+                  health, and postpartum fitness.</p>
+              </div>
             </div>
             <div class="case-funnel-stage">
               <div class="case-stage-badge" style="background: #FAEEDA; color: #633806;">Engage</div>
-              <div class="case-stage-content"><h3>Build trust through organic content</h3><p>Instagram Reels showing real class sessions, instructor introductions, and student transformation stories. Content pillars: yoga tips, behind the scenes, member spotlights, Chennai-specific content.</p></div>
+              <div class="case-stage-content">
+                <h3>Build trust through organic content</h3>
+                <p>Instagram Reels showing real class sessions, instructor introductions, and student transformation
+                  stories. Content pillars: yoga tips, behind the scenes, member spotlights, Chennai-specific content.
+                </p>
+              </div>
             </div>
             <div class="case-funnel-stage">
               <div class="case-stage-badge" style="background: #E1F5EE; color: #085041;">Convert</div>
-              <div class="case-stage-content"><h3>Drive trial bookings with a low-risk offer</h3><p>Meta Lead Ads offering a free first class — removing the financial risk of trying a new studio. WhatsApp Click-to-Chat ads for instant enquiry resolution, matching the studio's real, already-working booking channel. Retargeting anyone who engaged with Reels but didn't book.</p></div>
+              <div class="case-stage-content">
+                <h3>Drive trial bookings with a low-risk offer</h3>
+                <p>Meta Lead Ads offering a free first class — removing the financial risk of trying a new studio.
+                  WhatsApp Click-to-Chat ads for instant enquiry resolution, matching the studio's real, already-working
+                  booking channel. Retargeting anyone who engaged with Reels but didn't book.</p>
+              </div>
             </div>
             <div class="case-funnel-stage">
               <div class="case-stage-badge" style="background: #FAECE7; color: #712B13;">Retain</div>
-              <div class="case-stage-content"><h3>Build a community that keeps members coming back</h3><p>WhatsApp broadcast group for members with weekly schedules and motivational content. Monthly "Member of the Month" feature on Instagram. Referral programme: bring a friend, get one class free.</p></div>
+              <div class="case-stage-content">
+                <h3>Build a community that keeps members coming back</h3>
+                <p>WhatsApp broadcast group for members with weekly schedules and motivational content. Monthly "Member
+                  of the Month" feature on Instagram. Referral programme: bring a friend, get one class free.</p>
+              </div>
             </div>
           </div>
 
-          <div style="background: #E1F5EE; border-left: 3px solid #0F6E56; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #4A4540; margin-top: 1.5rem;">
-            <strong style="color: #0F6E56;">Why hyperlocal changes everything:</strong> a national brand targets millions with a ₹10L budget. A local studio targets 50,000 people within 5 km with ₹15,000/month — and wins by being more relevant and more present in the neighbourhood than any national chain can be.
+          <div
+            style="background: #E1F5EE; border-left: 3px solid #0F6E56; border-radius: 8px; padding: 1rem 1.25rem; font-size: 14px; color: #4A4540; margin-top: 1.5rem;">
+            <strong style="color: #0F6E56;">Why hyperlocal changes everything:</strong> a national brand targets
+            millions with a ₹10L budget. A local studio targets 50,000 people within 5 km with ₹15,000/month — and wins
+            by being more relevant and more present in the neighbourhood than any national chain can be.
           </div>
 
           <div class="case-section-label" style="margin-top: 2rem;">Tools used</div>
@@ -1668,9 +1894,11 @@
         <div class="case-section">
           <div class="case-section-label">03 · Audience</div>
           <h2>Three personas, one real niche</h2>
-          <p>The studio's real specialization — weight loss, hormone balancing, postpartum fitness, PCOS/PCOD, and fertility support — points at a sharper, more defensible audience than generic "yoga for fitness."</p>
+          <p>The studio's real specialization — weight loss, hormone balancing, postpartum fitness, PCOS/PCOD, and
+            fertility support — points at a sharper, more defensible audience than generic "yoga for fitness."</p>
           <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; margin: 1.75rem 0;">
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
               <h3 style="font-size: 1.05rem; margin-bottom: 0.6rem;">The Weight-Loss Committer</h3>
               <ul style="padding-left: 1.1rem; margin: 0; font-size: 13.5px; color: #4A4540;">
                 <li style="margin-bottom: 0.35rem;">Age 28–45, drawn to the real 30/60/100-day challenge format</li>
@@ -1679,7 +1907,8 @@
                 <li>Hook: "Real results, real Porur women"</li>
               </ul>
             </div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
               <h3 style="font-size: 1.05rem; margin-bottom: 0.6rem;">The Postpartum/Hormone-Health Seeker</h3>
               <ul style="padding-left: 1.1rem; margin: 0; font-size: 13.5px; color: #4A4540;">
                 <li style="margin-bottom: 0.35rem;">Age 25–40, dealing with PCOS, thyroid, or postpartum recovery</li>
@@ -1688,7 +1917,8 @@
                 <li>Hook: "Yoga built for your hormones"</li>
               </ul>
             </div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
               <h3 style="font-size: 1.05rem; margin-bottom: 0.6rem;">The Fitness Explorer</h3>
               <ul style="padding-left: 1.1rem; margin: 0; font-size: 13.5px; color: #4A4540;">
                 <li style="margin-bottom: 0.35rem;">Age 20–28, tried gym, wants something different</li>
@@ -1704,12 +1934,46 @@
         <div class="case-section">
           <div class="case-section-label">04 · Content Strategy</div>
           <h2>Systematizing what's already working</h2>
-          <p>The studio's real Instagram already runs on testimonials and challenge campaigns — the content plan here is about giving that a paid-media multiplier, not replacing it.</p>
+          <p>The studio's real Instagram already runs on testimonials and challenge campaigns — the content plan here is
+            about giving that a paid-media multiplier, not replacing it.</p>
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.1rem; margin: 1.75rem 0;">
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;"><div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Pillar 01 · Amplify</div><h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Boost real testimonials</h3><p style="font-size: 13.5px; color: #4A4540; margin: 0;">Existing before/after posts (e.g. "Lost 8.7kgs in 60 days") already convert organically — paid boosting extends their reach past existing followers.</p></div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;"><div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Pillar 02 · Educate</div><h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Women's-health content</h3><p style="font-size: 13.5px; color: #4A4540; margin: 0;">Content addressing PCOS, hormone balance, and postpartum recovery — the studio's real specialization, currently under-leveraged in messaging.</p></div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;"><div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Pillar 03 · Challenge-driven</div><h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Support the 30/60/100-day challenges</h3><p style="font-size: 13.5px; color: #4A4540; margin: 0;">The studio's real recurring challenge format is already a proven conversion mechanism — Meta ads timed to challenge launch dates capture new-cohort demand.</p></div>
-            <div style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;"><div style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">Pillar 04 · Local</div><h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Chennai-specific content</h3><p style="font-size: 13.5px; color: #4A4540; margin: 0;">"Yoga before Porur traffic," "Beat the Chennai heat with evening yin yoga."</p></div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Pillar 01 · Amplify</div>
+              <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Boost real testimonials</h3>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">Existing before/after posts (e.g. "Lost 8.7kgs in
+                60 days") already convert organically — paid boosting extends their reach past existing followers.</p>
+            </div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Pillar 02 · Educate</div>
+              <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Women's-health content</h3>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">Content addressing PCOS, hormone balance, and
+                postpartum recovery — the studio's real specialization, currently under-leveraged in messaging.</p>
+            </div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Pillar 03 · Challenge-driven</div>
+              <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Support the 30/60/100-day challenges</h3>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">The studio's real recurring challenge format is
+                already a proven conversion mechanism — Meta ads timed to challenge launch dates capture new-cohort
+                demand.</p>
+            </div>
+            <div
+              style="background: #fff; border: 1px solid rgba(26,23,20,0.1); border-radius: 10px; padding: 1.3rem 1.4rem;">
+              <div
+                style="font-family: monospace; font-size: 11.5px; font-weight: 600; color: #0F6E56; margin-bottom: 0.6rem;">
+                Pillar 04 · Local</div>
+              <h3 style="font-size: 1.05rem; margin-bottom: 0.5rem;">Chennai-specific content</h3>
+              <p style="font-size: 13.5px; color: #4A4540; margin: 0;">"Yoga before Porur traffic," "Beat the Chennai
+                heat with evening yin yoga."</p>
+            </div>
           </div>
         </div>
 
@@ -1719,10 +1983,13 @@
           <h2>The creative hooks</h2>
           <p>Three different hooks for three different personas — same brand, different emotional entry points.</p>
           <div class="case-creative-box">
-            <div class="case-creative-hook">"Find Your <span style="color: #0F6E56;">Balance</span> — Right Here in Porur"</div>
+            <div class="case-creative-hook">"Find Your <span style="color: #0F6E56;">Balance</span> — Right Here in
+              Porur"</div>
             <div class="case-creative-rationale">
-              <p>The local name "Porur" in the headline signals extreme relevance to the target audience, and tells the Meta algorithm exactly who to show it to.</p>
-              <p>Secondary hooks: "Real results, real Porur women" · "Yoga built for your hormones" · "Not your grandmother's yoga"</p>
+              <p>The local name "Porur" in the headline signals extreme relevance to the target audience, and tells the
+                Meta algorithm exactly who to show it to.</p>
+              <p>Secondary hooks: "Real results, real Porur women" · "Yoga built for your hormones" · "Not your
+                grandmother's yoga"</p>
             </div>
           </div>
         </div>
@@ -1731,19 +1998,52 @@
         <div class="case-section" id="results">
           <div class="case-section-label">06 · Projected Results & Learnings</div>
           <h2>What the data projected</h2>
-          <p>KPIs forecasted using Meta's local awareness campaign estimator, Google My Business insights benchmarks for fitness studios in Chennai, and published local fitness marketing benchmarks for Tier 1 Indian cities.</p>
+          <p>KPIs forecasted using Meta's local awareness campaign estimator, Google My Business insights benchmarks for
+            fitness studios in Chennai, and published local fitness marketing benchmarks for Tier 1 Indian cities.</p>
           <div class="case-kpi-grid">
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">30%</div><div class="case-kpi-desc">Projected increase in trial class bookings over 60 days</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">40%</div><div class="case-kpi-desc">Expected improvement in Google Maps search visibility</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">3×</div><div class="case-kpi-desc">Instagram follower growth from local content strategy</div></div>
-            <div class="case-kpi-card"><div class="case-kpi-number" style="color: #0F6E56;">25%</div><div class="case-kpi-desc">Projected WhatsApp community conversion to paid membership</div></div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">30%</div>
+              <div class="case-kpi-desc">Projected increase in trial class bookings over 60 days</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">40%</div>
+              <div class="case-kpi-desc">Expected improvement in Google Maps search visibility</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">3×</div>
+              <div class="case-kpi-desc">Instagram follower growth from local content strategy</div>
+            </div>
+            <div class="case-kpi-card">
+              <div class="case-kpi-number" style="color: #0F6E56;">25%</div>
+              <div class="case-kpi-desc">Projected WhatsApp community conversion to paid membership</div>
+            </div>
           </div>
           <div style="margin-top: 1.75rem;">
-            <div class="case-learning-item"><div class="case-learning-num">1</div><p><strong>Hyperlocal copy outperforms generic fitness ads.</strong> Mentioning "Porur" in the ad headline increases relevance score — the audience knows this is for them, not a national chain.</p></div>
-            <div class="case-learning-item"><div class="case-learning-num">2</div><p><strong>WhatsApp is India's most underused retention tool.</strong> A WhatsApp broadcast group costs ₹0 and retains members better than paid retargeting, because it feels personal, not promotional.</p></div>
-            <div class="case-learning-item"><div class="case-learning-num">3</div><p><strong>Google My Business is free SEO for local businesses.</strong> A fully optimised profile with weekly posts and review responses can generate 30–40% of bookings with zero ad spend.</p></div>
-            <div class="case-learning-item"><div class="case-learning-num">4</div><p><strong>Retention campaigns matter as much as acquisition.</strong> Acquiring a new yoga student costs roughly 5x more than retaining an existing one.</p></div>
-            <div class="case-learning-item"><div class="case-learning-num">5</div><p><strong>Three personas, three messages — same budget.</strong> Persona-specific ad sets cost the same as one generic ad, but improve relevance and lower cost per click.</p></div>
+            <div class="case-learning-item">
+              <div class="case-learning-num">1</div>
+              <p><strong>Hyperlocal copy outperforms generic fitness ads.</strong> Mentioning "Porur" in the ad headline
+                increases relevance score — the audience knows this is for them, not a national chain.</p>
+            </div>
+            <div class="case-learning-item">
+              <div class="case-learning-num">2</div>
+              <p><strong>WhatsApp is India's most underused retention tool.</strong> A WhatsApp broadcast group costs ₹0
+                and retains members better than paid retargeting, because it feels personal, not promotional.</p>
+            </div>
+            <div class="case-learning-item">
+              <div class="case-learning-num">3</div>
+              <p><strong>Google My Business is free SEO for local businesses.</strong> A fully optimised profile with
+                weekly posts and review responses can generate 30–40% of bookings with zero ad spend.</p>
+            </div>
+            <div class="case-learning-item">
+              <div class="case-learning-num">4</div>
+              <p><strong>Retention campaigns matter as much as acquisition.</strong> Acquiring a new yoga student costs
+                roughly 5x more than retaining an existing one.</p>
+            </div>
+            <div class="case-learning-item">
+              <div class="case-learning-num">5</div>
+              <p><strong>Three personas, three messages — same budget.</strong> Persona-specific ad sets cost the same
+                as one generic ad, but improve relevance and lower cost per click.</p>
+            </div>
           </div>
         </div>
 
@@ -1793,10 +2093,12 @@
   </script>
 
   <!-- EmailJS SDK -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
   <!-- EmailJS config (Service ID, Template ID, Public Key) -->
-  <script src="config/emailjs.config.js"></script>
-  <script src="app.js"></script>
+  <script src="config/emailjs.config.js" defer></script>
+  <!-- GSAP Animation Library -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="app.js" defer></script>
 </body>
 
 </html>
