@@ -6,7 +6,7 @@
 
 ## 🌟 Overview
 
-This is the portfolio of **Bhuvaneshwari B.**, a certified performance marketing specialist and digital strategist based in Chennai, India. Bringing over 3+ years of financial analytics experience together with triple certifications in Google Ads, Meta Ads Manager, and SEO (GUVI · Meta · NSDC 2025), this portfolio showcases real campaign planning, live technical SEO audits, and hyperlocal marketing funnels.
+This is the portfolio of **Bhuvaneshwari B.**, a certified digital marketing professional based in Chennai, India. Bringing 4+ years of financial analytics experience together with triple certifications (GUVI, Meta, NSDC) covering Google Ads, Meta Ads Manager, and SEO (GUVI · Meta · NSDC 2025), this portfolio showcases real campaign planning, live technical SEO audits, and hyperlocal marketing funnels.
 
 The website is crafted as a presentation-grade, reel-style snap-scroll web application with smooth micro-interactions, responsive multi-device layouts, and instant load times.
 
@@ -34,7 +34,7 @@ The website is crafted as a presentation-grade, reel-style snap-scroll web appli
   - Three targeted audience personas with persona-specific creative hooks.
 
 ### 3. Interactive Toolkit & Skill Proficiency Visualizer
-- Transparent proficiency rankings and visual skill bars across 12 marketing tools (Google Ads, Meta Ads Manager, Google Analytics 4, Canva, Premiere Pro, WhatsApp Business, etc.).
+- Transparent proficiency rankings and visual skill bars across 11 marketing tools (Google Ads, Meta Ads Manager, Google Analytics 4, Canva, Premiere Pro, WhatsApp Business, etc.).
 - Animated SVG progress bars triggered reactively via `IntersectionObserver`.
 
 ### 4. Verified Credentials & Certifications
@@ -72,11 +72,10 @@ The website is crafted as a presentation-grade, reel-style snap-scroll web appli
 ```
 portfolio-main/
 ├── assets/                       # Visual assets, branding logos, and case study creatives
-│   ├── apollo-ad-awareness.png
-│   ├── apollo-ad-consider.png
-│   ├── apollo-ad-convert.png
+│   ├── apollo-ad-awareness.jpg
+│   ├── apollo-ad-convert.jpg
 │   ├── apollo.jpeg
-│   ├── hero_bg.png               # High-resolution textured background
+│   ├── hero_bg.jpg               # High-resolution textured background
 │   ├── teamfitness-logo.png
 │   └── teamfitness-logo.svg
 ├── case-studies/                 # Standalone case study pages
@@ -138,7 +137,7 @@ const EMAILJS_CONFIG = {
 ## 👤 Author & Contact
 
 **Bhuvaneshwari Bakthavachalu**  
-*Performance Marketer · Chennai, Tamil Nadu, India*  
+*Digital Marketing Professional · Chennai, Tamil Nadu, India*  
 
 - ✉️ **Email:** [bhuvanabakthavachalu@gmail.com](mailto:bhuvanabakthavachalu@gmail.com)  
 - 💼 **LinkedIn:** [linkedin.com/in/bhuvaneshwari-bakthavachalu](https://linkedin.com/in/bhuvaneshwari-bakthavachalu)  
@@ -148,4 +147,4 @@ const EMAILJS_CONFIG = {
 
 ## 📄 License
 
-This project is licensed under the [MIT License](LICENSE).
+© Bhuvaneshwari Bakthavachalu. All rights reserved.

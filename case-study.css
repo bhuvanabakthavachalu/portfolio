@@ -301,3 +301,10 @@ footer a { color: #FFE8C2; }
   .hero { padding: 3rem 1.25rem 2.5rem; }
   nav { padding: 0 1.25rem; }
 }
+
+/* Phones: keep the page from scrolling sideways */
+@media (max-width: 640px) {
+  .nav-links { display: none; }
+  table.ledger { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.ledger th, table.ledger td { white-space: nowrap; }
+}

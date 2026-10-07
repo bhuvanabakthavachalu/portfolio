@@ -2439,3 +2439,7 @@ body {
     flex-direction: column;
   }
 }
+/* Mobile: give the hero headline room below the fixed header */
+@media (max-width: 768px) {
+  .hero-layout { padding-top: calc(var(--header-h) + 32px); }
+}
